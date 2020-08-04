@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       style: {
-        height: '100px',
+        height: '100%',
         padding: '20px',
         width: '100%'
       }
