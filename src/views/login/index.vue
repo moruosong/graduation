@@ -46,7 +46,12 @@ export default {
   methods: {
     submitForm(formNmae) {
       this.$refs[formNmae].validate(valid => {
-        alert(valid)
+        if (valid) {
+          const res = this.$http.post('login', this.ruleForm)
+          console.log(res)
+        } else {
+          this.$message.error('登录失败')
+        }
       })
     },
     resetForm(formNmae) {

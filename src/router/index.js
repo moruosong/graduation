@@ -22,17 +22,17 @@ const routes = [
         path: '/Home',
         name: 'Home',
         component: Home
-      },
-      {
-        path: '/login',
-        component: Login
       }
+      // {
+      //   path: '/login',
+      //   component: Login
+      // }
     ]
+  },
+  {
+    path: '/login',
+    component: Login
   }
-  // {
-  //   path: '/login',
-  //   component: Login
-  // }
 ]
 
 const router = new VueRouter({
