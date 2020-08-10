@@ -47,8 +47,23 @@ export default {
     submitForm(formNmae) {
       this.$refs[formNmae].validate(valid => {
         if (valid) {
-          const res = this.$http.post('login', this.ruleForm)
-          console.log(res)
+          var params = new URLSearchParams()
+          params.append('username', this.ruleForm.username)
+          params.append('password', this.ruleForm.password)
+          console.log()
+          // this.$http.get('login', this.ruleForm).then(res => {
+          //   console.log(res)
+          // })
+          this.$http({
+            method: 'post',
+            url: 'http://localhost:8080/api/login',
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded'
+            },
+            data: params
+          }).then((res) => {
+            console.log(res.data)
+          })
         } else {
           this.$message.error('登录失败')
         }
