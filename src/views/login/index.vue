@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像 -->
       <div class="avator_box">
-        <img src="@/assets/logo.png">
+        <img :src="require('@/assets/img/logo2.png')">
       </div>
       <!-- 登陆表单 -->
       <el-form ref="ruleForm" label-width="0px" class="login_form" :model="ruleForm" :rules="rules">
@@ -47,20 +47,10 @@ export default {
     submitForm(formNmae) {
       this.$refs[formNmae].validate(valid => {
         if (valid) {
-          var params = new URLSearchParams()
-          params.append('username', this.ruleForm.username)
-          params.append('password', this.ruleForm.password)
-          console.log()
-          // this.$http.get('login', this.ruleForm).then(res => {
-          //   console.log(res)
-          // })
           this.$http({
             method: 'post',
-            url: 'http://localhost:8080/api/login',
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded'
-            },
-            data: params
+            url: '/login',
+            data: this.ruleForm
           }).then((res) => {
             console.log(res.data)
           })
