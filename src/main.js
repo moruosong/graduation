@@ -15,21 +15,6 @@ import '@/styles/index.scss' // global css
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
-// const http = axios.create({
-//   baseURL:'http://localhost:8080/api',
-//   timeout: 1000,
-//   responseType:'json',
-//   headers:{
-//     'custome-header': 'miaov',
-//     'content-type':'application/x-www-form-urlencoded'   //转换为key=value的格式必须增加content-type
-//   },
-//   transformRequest:[function(data){
-//       console.log(data)
-//     data.age = 30;  //发送之前增加的属性
-//     return queryString.stringify(data);    //利用对应方法转换格式
-//   }]
-// })
-
 Vue.prototype.$http = axios
 axios.defaults.baseURL = 'http://localhost:8080/api'
 axios.defaults.timeout = 1000
