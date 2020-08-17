@@ -6,8 +6,8 @@
       <el-dropdown trigger="click" class="myInfo">
         <el-button icon="el-icon-user-solid" class="el-icon--right" circle />
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>我的信息</el-dropdown-item>
-          <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-item><div @click="toMyInfo">我的信息</div></el-dropdown-item>
+          <el-dropdown-item @click="toMyInfo()">退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-header>
@@ -52,7 +52,9 @@
           </el-menu-item>
         </el-menu>
       </el-aside>
-      <el-main>Main</el-main>
+      <el-main>
+        <router-view />
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -63,6 +65,12 @@ export default {
   data() {
     return {
       logourl: require('@/assets/img/logo.png')
+    }
+  },
+  methods: {
+    toMyInfo() {
+      // console.log(info)
+      this.$router.push('/myInfo')
     }
   }
 }

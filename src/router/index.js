@@ -4,6 +4,9 @@ import Index from '../views/index.vue'
 import Home from '../views/home/index.vue'
 import Login from '../views/login/index.vue'
 import BackStage from '../views/backstage/index.vue'
+import MyInfo from '../views/backstage/myinfo/index.vue'
+import ModifyName from '../views/backstage/myinfo/modifyName.vue'
+import ModifyPassword from '../views/backstage/myinfo/modifyPassword.vue'
 
 Vue.use(VueRouter)
 
@@ -36,7 +39,23 @@ const routes = [
   },
   {
     path: '/backStage',
-    component: BackStage
+    component: BackStage,
+    children: [
+      {
+        path: '/myInfo',
+        component: MyInfo,
+        children: [
+          {
+            path: '/modifyName',
+            component: ModifyName
+          },
+          {
+            path: '/modifyPassword',
+            component: ModifyPassword
+          }
+        ]
+      }
+    ]
   }
 ]
 

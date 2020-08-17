@@ -53,6 +53,7 @@ export default {
             data: this.ruleForm
           }).then((res) => {
             console.log(res.data)
+            this.$router.push('/backStage')
           })
         } else {
           this.$message.error('登录失败')
