@@ -7,7 +7,7 @@
         <el-button icon="el-icon-user-solid" class="el-icon--right" circle />
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item><div @click="toMyInfo">我的信息</div></el-dropdown-item>
-          <el-dropdown-item @click="toMyInfo()">退出登录</el-dropdown-item>
+          <el-dropdown-item><div @click="logout">退出登录</div></el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </el-header>
@@ -68,6 +68,10 @@ export default {
     }
   },
   methods: {
+    logout() {
+      window.sessionStorage.clear()
+      this.$router.push('/login')
+    },
     toMyInfo() {
       // console.log(info)
       this.$router.push('/myInfo')

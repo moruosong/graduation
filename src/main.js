@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 
 Vue.prototype.$http = axios
-axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = 'http://localhost:8888/api'
 axios.defaults.timeout = 1000
 axios.defaults.headers = { 'Content-type': 'application/x-www-form-urlencoded' }
 axios.interceptors.request.use(function(config) {

@@ -53,6 +53,9 @@ export default {
             data: this.ruleForm
           }).then((res) => {
             console.log(res.data)
+            window.sessionStorage.setItem('token', res.data.object.uuid)
+            window.sessionStorage.setItem('nickname', res.data.object.nickname)
+            window.sessionStorage.setItem('username', res.data.object.username)
             this.$router.push('/backStage')
           })
         } else {

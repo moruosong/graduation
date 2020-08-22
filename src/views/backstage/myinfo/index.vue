@@ -9,8 +9,8 @@
           <img :src="require('@/assets/img/logo2.png')">
         </div>
         <div style="padding: 30px">
-          <span>用户名：</span><br>
-          <span>昵称：</span>
+          <span>用户名：{{ username }}</span><br>
+          <span>昵称：{{ nickname }}</span>
         </div>
         <div>
           <el-button style="width: 100%" :disabled="isModifyName" @click="modifyName">修改昵称</el-button><br>
@@ -20,29 +20,43 @@
     </el-col>
     <el-col :span="16" style="height: 100%">
       <el-card style="height: 100%; width: 100%">
-        <router-view />
+        <modify-name v-if="isModifyName" @modifySuccess="modifySuccess" />
+        <modify-password v-if="isModifyPassword" />
       </el-card>
     </el-col>
   </el-row>
 </template>
 
 <script>
+import modifyName from './modifyName'
+import modifyPassword from './modifyPassword'
+
 export default {
   name: 'MyInfo',
+  components: { modifyName, modifyPassword },
   data() {
     return {
       isModifyName: false,
-      isModifyPassword: false
+      isModifyPassword: false,
+      username: '',
+      nickname: ''
     }
   },
+  mounted() {
+    this.username = window.sessionStorage.getItem('username')
+    this.nickname = window.sessionStorage.getItem('nickname')
+  },
   methods: {
+    modifySuccess() {
+      this.nickname = window.sessionStorage.getItem('nickname')
+    },
     modifyName() {
-      this.$router.push('/modifyName')
+      // this.$router.push('/modifyName')
       this.isModifyName = true
       this.isModifyPassword = false
     },
     modifyPassword() {
-      this.$router.push('/modifyPassword')
+      // this.$router.push('/modifyPassword')
       this.isModifyName = false
       this.isModifyPassword = true
     }

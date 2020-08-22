@@ -10,7 +10,7 @@
       <el-input v-model="form.relPassword" show-password auto-complete="new-password" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary">修改</el-button>
+      <el-button type="primary" @click="modifyPassword">修改</el-button>
       <el-button>取消</el-button>
     </el-form-item>
   </el-form>
@@ -26,6 +26,30 @@ export default {
         oldPassword: '',
         relPassword: ''
       }
+    }
+  },
+  methods: {
+    modifyPassword() {
+      const args = { username: window.sessionStorage.getItem('username'), newpwd: this.form.newPassword }
+      this.$http({
+        method: 'post',
+        url: '/user/updatePwd',
+        data: args
+      }).then(res => {
+        console.log(res)
+        if (res.data.success) {
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+          this.$router.push('/login')
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
     }
   }
 }
