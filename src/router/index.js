@@ -7,6 +7,7 @@ import BackStage from '../views/backstage/index.vue'
 import MyInfo from '../views/backstage/myinfo/index.vue'
 import ModifyName from '../views/backstage/myinfo/modifyName.vue'
 import ModifyPassword from '../views/backstage/myinfo/modifyPassword.vue'
+import User from '../views/backstage/user/index.vue'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,10 @@ const routes = [
             component: ModifyPassword
           }
         ]
+      },
+      {
+        path: '/user',
+        component: User
       }
     ]
   }

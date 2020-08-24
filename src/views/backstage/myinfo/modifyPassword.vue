@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+  <el-form ref="modifyForm" :model="form" :rules="rules" label-width="80px">
     <el-form-item label="旧密码" prop="oldPassword">
       <el-input v-model="form.oldPassword" show-password auto-complete="new-password" />
     </el-form-item>
@@ -50,27 +50,34 @@ export default {
   },
   methods: {
     modifyPassword() {
-      this.$refs.form.validate(valid => {
-        const args = { username: window.sessionStorage.getItem('username'), newpwd: this.form.newPassword }
-        this.$http({
-          method: 'post',
-          url: '/user/updatePwd',
-          data: args
-        }).then(res => {
-          console.log(res)
-          if (res.data.success) {
-            this.$message({
-              message: res.data.msg,
-              type: 'success'
-            })
-            this.$router.push('/login')
-          } else {
-            this.$message({
-              message: res.data.msg,
-              type: 'error'
-            })
-          }
-        })
+      this.$refs.modifyForm.validate(valid => {
+        if (valid) {
+          const args = { username: window.sessionStorage.getItem('username'), newpwd: this.form.newPassword }
+          this.$http({
+            method: 'post',
+            url: '/user/updatePwd',
+            data: args
+          }).then(res => {
+            console.log(res)
+            if (res.data.success) {
+              this.$message({
+                message: res.data.msg,
+                type: 'success'
+              })
+              this.$router.push('/login')
+            } else {
+              this.$message({
+                message: res.data.msg,
+                type: 'error'
+              })
+            }
+          })
+        } else {
+          this.$message({
+            message: '请正确输入',
+            type: 'error'
+          })
+        }
       })
     }
   }

@@ -52,11 +52,22 @@ export default {
             url: '/login',
             data: this.ruleForm
           }).then((res) => {
-            console.log(res.data)
-            window.sessionStorage.setItem('token', res.data.object.uuid)
-            window.sessionStorage.setItem('nickname', res.data.object.nickname)
-            window.sessionStorage.setItem('username', res.data.object.username)
-            this.$router.push('/backStage')
+            if (res.data.success) {
+              this.$message({
+                message: res.data.msg,
+                type: 'success'
+              })
+              console.log(res)
+              window.sessionStorage.setItem('token', res.data.object.uuid)
+              window.sessionStorage.setItem('nickname', res.data.object.nickname)
+              window.sessionStorage.setItem('username', res.data.object.username)
+              this.$router.push('/backStage')
+            } else {
+              this.$message({
+                message: res.data.msg,
+                type: 'error'
+              })
+            }
           })
         } else {
           this.$message.error('登录失败')
