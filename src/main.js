@@ -21,8 +21,19 @@ axios.defaults.timeout = 1000
 axios.defaults.headers = { 'Content-type': 'application/x-www-form-urlencoded' }
 axios.interceptors.request.use(function(config) {
   // 在发送请求之前做些什么
+  // if (config.data) {
+  //   var querystring = require('querystring')
+  //   config.data = querystring.stringify(config.data)
+  // }
+  console.log(config.data)
+  if (!config.data) {
+    config.data = {}
+    config.headers['Content-type'] = 'application/json'
+    return config
+  }
   var querystring = require('querystring')
   config.data = querystring.stringify(config.data)
+  // console.log(config)
   return config
 }, function(error) {
   // 对请求错误做些什么
