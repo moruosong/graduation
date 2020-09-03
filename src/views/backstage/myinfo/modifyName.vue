@@ -30,7 +30,8 @@ export default {
       this.$http({
         method: 'post',
         url: '/user/updateNickName',
-        data: this.form
+        data: this.form,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(res => {
         console.log(res)
         if (res.data.success) {

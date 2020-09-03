@@ -25,6 +25,10 @@
             <i class="el-icon-user-solid" />
             <span slot="title">用户管理</span>
           </el-menu-item>
+          <el-menu-item index="/image">
+            <i class="el-icon-user-solid" />
+            <span slot="title">图片管理</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>

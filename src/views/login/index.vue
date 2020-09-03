@@ -50,7 +50,8 @@ export default {
           this.$http({
             method: 'post',
             url: '/login',
-            data: this.ruleForm
+            data: this.ruleForm,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
           }).then((res) => {
             if (res.data.success) {
               this.$message({

@@ -8,6 +8,7 @@ import MyInfo from '../views/backstage/myinfo/index.vue'
 import ModifyName from '../views/backstage/myinfo/modifyName.vue'
 import ModifyPassword from '../views/backstage/myinfo/modifyPassword.vue'
 import User from '../views/backstage/user/index.vue'
+import ImageManage from '../views/backstage/imageManage/index.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,10 @@ const routes = [
       {
         path: '/user',
         component: User
+      },
+      {
+        path: '/image',
+        component: ImageManage
       }
     ]
   }

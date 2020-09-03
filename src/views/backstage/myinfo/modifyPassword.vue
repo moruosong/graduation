@@ -1,7 +1,7 @@
 <template>
   <el-form ref="modifyForm" :model="form" :rules="rules" label-width="80px">
-    <el-form-item label="旧密码" prop="oldPassword">
-      <el-input v-model="form.oldPassword" show-password auto-complete="new-password" />
+    <el-form-item label="旧密码" prop="password">
+      <el-input v-model="form.password" show-password auto-complete="new-password" />
     </el-form-item>
     <el-form-item label="新密码" prop="newPassword">
       <el-input v-model="form.newPassword" show-password auto-complete="new-password" />
@@ -31,7 +31,7 @@ export default {
     }
     return {
       form: {
-        oldPassword: '',
+        password: '',
         newPassword: '',
         relPassword: ''
       },
@@ -39,7 +39,7 @@ export default {
         relPassword: [
           { validator: checkRelPassword, trigger: 'blur' }
         ],
-        oldPassword: [
+        password: [
           { required: true, message: '请输入旧密码', trigger: 'blur' }
         ],
         newPassword: [
@@ -52,11 +52,12 @@ export default {
     modifyPassword() {
       this.$refs.modifyForm.validate(valid => {
         if (valid) {
-          const args = { username: window.sessionStorage.getItem('username'), newpwd: this.form.newPassword }
+          const args = { username: window.sessionStorage.getItem('username'), newpwd: this.form.newPassword, password: this.form.password }
           this.$http({
             method: 'post',
             url: '/user/updatePwd',
-            data: args
+            data: args,
+            headers: { 'Content-Type': 'application/json' }
           }).then(res => {
             console.log(res)
             if (res.data.success) {
