@@ -93,6 +93,19 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       }).then(res => {
         console.log(res)
+        if (res.data.success) {
+          const newUser = { nickname: this.form.nickname, username: this.form.username, status: 0, role: 1, roleTxt: '管理员' }
+          this.userList.push(newUser)
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
       })
     },
     handleStatusChange(username, status) {
