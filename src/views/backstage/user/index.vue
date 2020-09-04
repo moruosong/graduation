@@ -29,6 +29,7 @@
           <div v-if="scope.row.role !== 0">
             <el-button v-if="scope.row.status === '0'" type="danger" size="small" @click="handleStatusChange(scope.row.username, '1')">禁用</el-button>
             <el-button v-if="scope.row.status === '1'" type="success" size="small" @click="handleStatusChange(scope.row.username, '0')">启用</el-button>
+            <el-button size="small" type="danger" @click="handleDel(scope.row.username)">删除</el-button>
           </div>
           <div v-else>
             <span>超级管理员不可修改</span>
@@ -36,6 +37,13 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      layout="prev, pager, next"
+      :page-count="page.pages"
+      pager-count="10"
+      :current-page="page.pageNum"
+      :hide-on-single-page="true"
+    />
     <el-dialog
       title="添加用户"
       :visible.sync="dlg"
@@ -66,6 +74,7 @@ export default {
     return {
       userList: [],
       dlg: false,
+      page: {},
       form: {
         username: '',
         nickname: '',
@@ -79,20 +88,22 @@ export default {
       url: '/user/pageList',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      console.log(res.data.object.list)
+      console.log(res)
+      this.page = res.data.object
       this.userList = res.data.object.list
     })
   },
   methods: {
+    handleDel(username) {
+      console.log(username)
+    },
     handleAddUser() {
-      console.log(this.form)
       this.$http({
         method: 'post',
         url: '/user/addUser',
         data: this.form,
         headers: { 'Content-Type': 'application/json' }
       }).then(res => {
-        console.log(res)
         const newUser = { nickname: this.form.nickname, username: this.form.username, status: '0', role: 1, roleTxt: '管理员' }
         this.userList.push(newUser)
         if (res.data.success) {

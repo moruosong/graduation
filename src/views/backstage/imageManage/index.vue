@@ -1,25 +1,52 @@
 <template>
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
-      <span>图片管理</span>
+      <span>轮播图管理</span>
+      <el-upload
+        class="upload-demo"
+        :limit="5"
+        :headers="{ 'Content-Type': 'application/json' }"
+        action="http://localhost:8888/api/banner/uploadBanner"
+        :before-upload="beforeUpload"
+        :on-error="handleError"
+        :on-success="handleSuccess"
+        :on-exceed="onExceed"
+        :on-preview="handlePreview"
+        :file-list="fileList"
+        list-type="picture"
+      >
+        <el-button size="small" type="primary">点击上传</el-button>
+      </el-upload>
     </div>
-    <el-upload
-      class="upload-demo"
-      :limit="5"
-      :headers="{ 'Content-Type': 'application/json' }"
-      action="http://localhost:8888/api/banner/uploadBanner"
-      :before-upload="beforeUpload"
-      :on-error="handleError"
-      :on-success="handleSuccess"
-      :on-exceed="onExceed"
-      :on-preview="handlePreview"
-      :on-remove="handleRemove"
-      :file-list="fileList"
-      list-type="picture"
-    >
-      <el-button size="small" type="primary">点击上传</el-button>
-      <div slot="tip" class="el-upload__tip">只能上传jpg/png/gif/bmp文件，且不超过2Mb</div>
-    </el-upload>
+    <el-table :data="fileList" style="width: 100%">
+      <el-table-column
+        align="center"
+        label="缩略图"
+        width="100"
+      >
+        <template scope="scope">
+          <img
+            style="width: 100px; height: 100px"
+            :src="scope.row.paht"
+            fit="fit"
+          >
+        </template>
+      </el-table-column>
+      <el-table-column
+        prop="newName"
+        label="名称"
+        width="100"
+      />
+      <el-table-column
+        prop="path"
+        label="路径"
+      />
+      <el-table-column
+        align="center"
+        label="操作"
+        width="200"
+      />
+    </el-table>
     <span>效果预览</span>
     <el-carousel height="500px">
       <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
@@ -39,8 +66,21 @@ export default {
         require('@/assets/img/rotation2.jpg'),
         require('@/assets/img/rotation3.jpg')
       ],
-      fileList: [{ name: '', url: '' }]
+      fileList: []
     }
+  },
+  mounted() {
+    this.$http({
+      method: 'post',
+      url: '/banner/getAllBanner',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+      console.log(res)
+      this.fileList = res.data.object
+      this.fileList.forEach(item => {
+        item.path = require(item.path)
+      })
+    })
   },
   methods: {
     // 文件上传成功的钩子函数
@@ -55,13 +95,13 @@ export default {
       }
     },
     // 删除文件之前的钩子函数
-    handleRemove(file, fileList) {
-      this.$message({
-        type: 'info',
-        message: '已删除原有图片',
-        duration: 6000
-      })
-    },
+    // handleRemove(file, fileList) {
+    //   this.$message({
+    //     type: 'info',
+    //     message: '已删除原有图片',
+    //     duration: 6000
+    //   })
+    // },
     // 上传的文件个数超出设定时触发的函数
     onExceed(files, fileList) {
       this.$message({
@@ -98,7 +138,10 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+.el-upload-list {
+  display: none
+}
 .card-hrader{
   display: flex;
   flex-direction: row;
