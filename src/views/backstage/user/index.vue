@@ -117,6 +117,22 @@ export default {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(res => {
         console.log(res)
+        if (res.data.success) {
+          this.userList.forEach(item => {
+            if (item.username === username) {
+              item.status = status
+            }
+          })
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
       })
     }
   }
