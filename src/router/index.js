@@ -9,6 +9,8 @@ import ModifyName from '../views/backstage/myinfo/modifyName.vue'
 import ModifyPassword from '../views/backstage/myinfo/modifyPassword.vue'
 import User from '../views/backstage/user/index.vue'
 import ImageManage from '../views/backstage/imageManage/index.vue'
+import News from '../views/backstage/news/index.vue'
+import Notices from '../views/backstage/notices/index.vue'
 
 Vue.use(VueRouter)
 
@@ -64,6 +66,14 @@ const routes = [
       {
         path: '/image',
         component: ImageManage
+      },
+      {
+        path: '/news',
+        component: News
+      },
+      {
+        path: '/notices',
+        component: Notices
       }
     ]
   }

@@ -26,8 +26,16 @@
             <span slot="title">用户管理</span>
           </el-menu-item>
           <el-menu-item index="/image">
-            <i class="el-icon-user-solid" />
-            <span slot="title">图片管理</span>
+            <i class="el-icon-picture" />
+            <span slot="title">轮播图管理</span>
+          </el-menu-item>
+          <el-menu-item index="/news">
+            <i class="el-icon-s-order" />
+            <span slot="title">新闻管理</span>
+          </el-menu-item>
+          <el-menu-item index="/notices">
+            <i class="el-icon-s-cooperation" />
+            <span slot="title">公告管理</span>
           </el-menu-item>
         </el-menu>
       </el-aside>

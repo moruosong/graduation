@@ -2,6 +2,10 @@
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
       <span>用户管理</span>
+      <div style="float: right; width: 280px">
+        <el-input v-model="username" size="small" placeholder="请输入用户名" style="width: 200px" />
+        <el-button type="primary" size="small" style="margin-left: 10px" @click="search(username)">搜索</el-button>
+      </div>
       <el-button type="primary" size="small" @click="dlg = true">添加用户</el-button>
     </div>
     <el-table :data="userList" style="width: 100%">
@@ -40,7 +44,6 @@
     <el-pagination
       layout="prev, pager, next"
       :page-count="page.pages"
-      pager-count="10"
       :current-page="page.pageNum"
       :hide-on-single-page="true"
     />
@@ -75,6 +78,7 @@ export default {
       userList: [],
       dlg: false,
       page: {},
+      username: '',
       form: {
         username: '',
         nickname: '',
@@ -94,6 +98,18 @@ export default {
     })
   },
   methods: {
+    search(username) {
+      this.$http({
+        method: 'post',
+        url: '/user/pageList',
+        headers: { 'Content-Type': 'application/json' },
+        data: { username: username }
+      }).then(res => {
+        console.log(res)
+        this.page = res.data.object
+        this.userList = res.data.object.list
+      })
+    },
     handleDel(username) {
       console.log(username)
     },

@@ -2,6 +2,7 @@
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
       <span>轮播图管理</span>
+      <el-button size="small" type="primary" @click="showBanner = true">效果预览</el-button>
       <el-upload
         class="upload-demo"
         :limit="5"
@@ -25,11 +26,11 @@
         width="100"
       >
         <template scope="scope">
-          <img
+          <el-image
             style="width: 100px; height: 100px"
-            :src="scope.row.paht"
-            fit="fit"
-          >
+            :src="scope.row.path"
+            fit="scale-down"
+          />
         </template>
       </el-table-column>
       <el-table-column
@@ -47,12 +48,17 @@
         width="200"
       />
     </el-table>
-    <span>效果预览</span>
-    <el-carousel height="500px">
-      <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
-        <el-image :src="item" style="width: 100%; height: 100%" fit="cover" />
-      </el-carousel-item>
-    </el-carousel>
+    <el-dialog
+      title="首页轮播图预览"
+      :visible.sync="showBanner"
+      width="100%"
+    >
+      <el-carousel height="500px">
+        <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
+          <el-image :src="item" style="width: 100%; height: 100%" fit="cover" />
+        </el-carousel-item>
+      </el-carousel>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -61,12 +67,9 @@ export default {
   name: 'ImageManage',
   data() {
     return {
-      rotation: [
-        require('@/assets/img/rotation1.jpg'),
-        require('@/assets/img/rotation2.jpg'),
-        require('@/assets/img/rotation3.jpg')
-      ],
-      fileList: []
+      rotation: [],
+      fileList: [],
+      showBanner: false
     }
   },
   mounted() {
@@ -78,7 +81,10 @@ export default {
       console.log(res)
       this.fileList = res.data.object
       this.fileList.forEach(item => {
-        item.path = require(item.path)
+        // console.log(item.path)
+        item.path = require('@/assets/img' + item.path)
+        console.log(item.path)
+        this.rotation.push(item.path)
       })
     })
   },
