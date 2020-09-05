@@ -120,9 +120,9 @@ export default {
         data: this.form,
         headers: { 'Content-Type': 'application/json' }
       }).then(res => {
-        const newUser = { nickname: this.form.nickname, username: this.form.username, status: '0', role: 1, roleTxt: '管理员' }
-        this.userList.push(newUser)
         if (res.data.success) {
+          const newUser = { nickname: this.form.nickname, username: this.form.username, status: '0', role: 1, roleTxt: '管理员' }
+          this.userList.push(newUser)
           this.$message({
             message: res.data.msg,
             type: 'success'
