@@ -46,7 +46,11 @@
         align="center"
         label="操作"
         width="200"
-      />
+      >
+        <template scope="scope">
+          <el-button type="danger" size="small" @click="handleStatusChange(scope.row.id, '1')">删除</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-dialog
       title="首页轮播图预览"
@@ -81,14 +85,39 @@ export default {
       console.log(res)
       this.fileList = res.data.object
       this.fileList.forEach(item => {
-        // console.log(item.path)
         item.path = require('@/assets/img' + item.path)
-        console.log(item.path)
         this.rotation.push(item.path)
       })
     })
   },
   methods: {
+    handleStatusChange(id, status) {
+      this.$http({
+        method: 'post',
+        url: '/banner/switchStatus',
+        data: { id: id, status: status },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }).then(res => {
+        if (res.data.success) {
+          let index = 0
+          this.fileList.forEach((item, i) => {
+            if (item.id === id) {
+              index = i
+            }
+          })
+          this.fileList.splice(index, 1)
+          this.$message({
+            message: '删除成功',
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
+    },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
       this.$message({
