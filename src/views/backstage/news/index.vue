@@ -67,7 +67,7 @@ export default {
         title: '',
         content: '',
         imageList: [],
-        isAdd: 1
+        isAdd: 0
       }
     }
   },
@@ -87,7 +87,7 @@ export default {
       this.$http({
         method: 'post',
         url: '/news/toDoNews',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: { 'Content-Type': 'application/json' },
         data: this.form
       }).then(res => {
         console.log(res)

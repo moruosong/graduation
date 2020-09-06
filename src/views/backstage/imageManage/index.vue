@@ -173,7 +173,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 .el-upload-list {
   display: none
 }
