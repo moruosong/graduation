@@ -93,6 +93,7 @@ export default {
         console.log(res)
         this.dlg = false
         if (res.data.success) {
+          this.newsList.push(res.data.object)
           this.$message({
             message: res.data.msg,
             type: 'success'
