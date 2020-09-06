@@ -66,7 +66,7 @@ export default {
       form: {
         title: '',
         content: '',
-        imageList: [],
+        picList: [],
         isAdd: 0
       }
     }
@@ -112,9 +112,6 @@ export default {
         message: '图片上传成功',
         duration: 6000
       })
-      if (file.response.success) {
-        this.editor.picture = file.response.message // 将返回的文件储存路径赋值picture字段
-      }
     },
     // 文件上传前的前的钩子函数
     // 参数是上传的文件，若返回false，或返回Primary且被reject，则停止上传
