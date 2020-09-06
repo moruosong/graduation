@@ -107,6 +107,7 @@ export default {
     },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
+      console.log(res)
       this.$message({
         type: 'info',
         message: '图片上传成功',
