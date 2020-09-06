@@ -125,9 +125,6 @@ export default {
         message: '图片上传成功',
         duration: 6000
       })
-      if (file.response.success) {
-        this.editor.picture = file.response.message // 将返回的文件储存路径赋值picture字段
-      }
     },
     // 删除文件之前的钩子函数
     // handleRemove(file, fileList) {
