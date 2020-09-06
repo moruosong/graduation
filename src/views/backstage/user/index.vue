@@ -112,6 +112,32 @@ export default {
     },
     handleDel(username) {
       console.log(username)
+      this.$http({
+        method: 'post',
+        url: '/user/deleteUser',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: { username: username }
+      }).then(res => {
+        console.log(res)
+        if (res.data.success) {
+          let index = 0
+          this.userList.forEach((item, i) => {
+            if (item.username === username) {
+              index = i
+            }
+          })
+          this.userList.splice(index, 1)
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
     },
     handleAddUser() {
       this.$http({

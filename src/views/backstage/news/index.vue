@@ -34,7 +34,16 @@
           <el-input v-model="form.content" type="textarea" :rows="10" />
         </el-form-item>
         <el-form-item label="图片">
-          <el-button size="small" type="primary">点击上传</el-button>
+          <el-upload
+            class="upload-demo"
+            :limit="5"
+            :headers="{ 'Content-Type': 'application/json' }"
+            action="http://localhost:8888/api/banner/uploadBanner"
+            :file-list="form.imageList"
+            list-type="picture"
+          >
+            <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
