@@ -31,7 +31,7 @@
           <el-input v-model="form.title" />
         </el-form-item>
         <el-form-item label="内容">
-          <el-input v-model="form.title" type="textarea" :rows="10" />
+          <el-input v-model="form.content" type="textarea" :rows="10" />
         </el-form-item>
         <el-form-item label="图片">
           <el-button size="small" type="primary">点击上传</el-button>
@@ -39,7 +39,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dlg = false">取 消</el-button>
-        <el-button type="primary" @click="dlg = false">提 交</el-button>
+        <el-button type="primary" @click="handelSubmit">提 交</el-button>
       </span>
     </el-dialog>
   </el-card>
@@ -55,7 +55,8 @@ export default {
       form: {
         title: '',
         content: '',
-        imageList: []
+        imageList: [],
+        isAdd: 1
       }
     }
   },
@@ -69,6 +70,30 @@ export default {
       this.page = res.data.object
       this.newsList = res.data.object.list
     })
+  },
+  methods: {
+    handelSubmit() {
+      this.$http({
+        method: 'post',
+        url: '/news/toDoNews',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: this.form
+      }).then(res => {
+        console.log(res)
+        this.dlg = false
+        if (res.data.success) {
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
+    }
   }
 }
 </script>
