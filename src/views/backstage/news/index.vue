@@ -38,8 +38,10 @@
             class="upload-demo"
             :limit="5"
             :headers="{ 'Content-Type': 'application/json' }"
-            action="http://localhost:8888/api/banner/uploadBanner"
+            action="http://localhost:8888/api/news/uploadPic"
             :file-list="form.imageList"
+            :before-upload="beforeUpload"
+            :on-success="handleSuccess"
             list-type="picture"
           >
             <el-button size="small" type="primary">点击上传</el-button>
@@ -102,6 +104,34 @@ export default {
           })
         }
       })
+    },
+    // 文件上传成功的钩子函数
+    handleSuccess(res, file) {
+      this.$message({
+        type: 'info',
+        message: '图片上传成功',
+        duration: 6000
+      })
+      if (file.response.success) {
+        this.editor.picture = file.response.message // 将返回的文件储存路径赋值picture字段
+      }
+    },
+    // 文件上传前的前的钩子函数
+    // 参数是上传的文件，若返回false，或返回Primary且被reject，则停止上传
+    beforeUpload(file) {
+      console.log(file)
+      const isJPG = file.type === 'image/jpeg'
+      const isGIF = file.type === 'image/gif'
+      const isPNG = file.type === 'image/png'
+      const isBMP = file.type === 'image/bmp'
+      const isLt2M = file.size / 1024 / 1024 < 2
+      if (!isJPG && !isGIF && !isPNG && !isBMP) {
+        this.$message.error('上传图片必须是JPG/GIF/PNG/BMP 格式!')
+      }
+      if (!isLt2M) {
+        this.$message.error('上传图片大小不能超过 2MB!')
+      }
+      return (isJPG || isBMP || isGIF || isPNG) && isLt2M
     }
   }
 }
