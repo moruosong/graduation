@@ -6,7 +6,7 @@
       <el-upload
         class="upload-demo"
         :limit="5"
-        :headers="{ 'Content-Type': 'application/json' }"
+        :headers="{ 'Content-Type': 'multipart/form-data' }"
         action="http://localhost:8888/api/banner/uploadBanner"
         :before-upload="beforeUpload"
         :on-error="handleError"
