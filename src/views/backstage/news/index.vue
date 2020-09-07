@@ -19,12 +19,17 @@
         align="center"
         label="操作"
         width="200"
-      />
+      >
+        <template scope="scope">
+          <el-button type="primary" size="small" @click="handleUpdate(scope.row.id)">修改</el-button>
+        </template>
+      </el-table-column>
     </el-table>
     <el-dialog
       title="添加新闻"
       :visible.sync="dlg"
       width="60%"
+      @closed="handelDlgClose"
     >
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="标题">
@@ -83,6 +88,35 @@ export default {
     })
   },
   methods: {
+    handelDlgClose() {
+      this.form = {
+        title: '',
+        content: '',
+        picList: [],
+        isAdd: 0
+      }
+    },
+    handleUpdate(id) {
+      this.$http({
+        method: 'post',
+        url: '/news/getNewsById',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: { id: id }
+      }).then(res => {
+        console.log(res)
+        if (res.data.success) {
+          this.dlg = true
+          this.form = res.data.object
+          this.form.isAdd = '1'
+          console.log(this.form)
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
+    },
     handelSubmit() {
       this.$http({
         method: 'post',
@@ -93,7 +127,18 @@ export default {
         console.log(res)
         this.dlg = false
         if (res.data.success) {
-          this.newsList.push(res.data.object)
+          console.log(this.form.isAdd, this.form.isAdd === 0)
+          if (this.form.isAdd === 0) {
+            this.newsList.push(res.data.object)
+            console.log(this.newsList)
+          }
+          if (this.form.isAdd === '1') {
+            this.newsList.forEach(item => {
+              if (item.id === res.data.object.id) {
+                item = res.data.object
+              }
+            })
+          }
           this.$message({
             message: res.data.msg,
             type: 'success'
@@ -123,7 +168,7 @@ export default {
       const isGIF = file.type === 'image/gif'
       const isPNG = file.type === 'image/png'
       const isBMP = file.type === 'image/bmp'
-      const isLt2M = file.size / 1024 / 1024 < 2
+      const isLt2M = file.size / 1024 / 1024 < 5
       if (!isJPG && !isGIF && !isPNG && !isBMP) {
         this.$message.error('上传图片必须是JPG/GIF/PNG/BMP 格式!')
       }

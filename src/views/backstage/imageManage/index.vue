@@ -150,7 +150,7 @@ export default {
       const isGIF = file.type === 'image/gif'
       const isPNG = file.type === 'image/png'
       const isBMP = file.type === 'image/bmp'
-      const isLt2M = file.size / 1024 / 1024 < 2
+      const isLt2M = file.size / 1024 / 1024 < 5
       if (!isJPG && !isGIF && !isPNG && !isBMP) {
         this.$message.error('上传图片必须是JPG/GIF/PNG/BMP 格式!')
       }

@@ -57,10 +57,10 @@
           <el-input v-model="form.username" />
         </el-form-item>
         <el-form-item label="昵称">
-          <el-input v-model="form.nickname" />
+          <el-input v-model="form.nickname" auto-complete="new-password" />
         </el-form-item>
         <el-form-item label="密码">
-          <el-input v-model="form.password" show-password />
+          <el-input v-model="form.password" show-password auto-complete="new-password" />
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -149,6 +149,7 @@ export default {
         if (res.data.success) {
           const newUser = { nickname: this.form.nickname, username: this.form.username, status: '0', role: 1, roleTxt: '管理员' }
           this.userList.push(newUser)
+          this.dlg = false
           this.$message({
             message: res.data.msg,
             type: 'success'
