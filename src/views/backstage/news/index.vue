@@ -42,7 +42,6 @@
           <el-upload
             class="upload-demo"
             :limit="5"
-            :headers="{ 'Content-Type': 'multipart/form-data' }"
             action="http://localhost:8888/api/news/uploadPic"
             :file-list="form.imageList"
             :before-upload="beforeUpload"
