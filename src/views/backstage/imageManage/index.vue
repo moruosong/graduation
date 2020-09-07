@@ -119,6 +119,7 @@ export default {
     },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
+      console.log('成功', res)
       this.fileList.push(res.data.object)
       this.$message({
         type: 'info',
