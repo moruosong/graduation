@@ -1,7 +1,7 @@
 <template>
   <el-container class="all">
-    <el-aside v-if="isCollapse" class="hidden-sm-and-up">
-      <el-menu :router="true" @select="gotoPage">
+    <el-aside v-if="isCollapse" class="hidden-sm-and-up" style="padding: 0 0 0 0">
+      <el-menu :router="true" style="width: 100%; height: 100%;" @select="gotoPage">
         <el-menu-item index="/Home" route="/home">首页</el-menu-item>
         <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
         <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>

@@ -7,7 +7,7 @@
       <el-image
         style="width: 100%; height: 660px"
         :src="pic"
-        fit="cover"
+        fit="contain"
       />
     </div>
     <div>
