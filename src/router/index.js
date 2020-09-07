@@ -11,6 +11,12 @@ import User from '../views/backstage/user/index.vue'
 import ImageManage from '../views/backstage/imageManage/index.vue'
 import News from '../views/backstage/news/index.vue'
 import Notices from '../views/backstage/notices/index.vue'
+import AboutUs from '../views/aboutus/index.vue'
+import Survey from '../views/survey/index.vue'
+import Business from '../views/business/index.vue'
+import Culture from '../views/culture/index.vue'
+import ShowNews from '../views/news/index.vue'
+import Contact from '../views/contact/index.vue'
 
 Vue.use(VueRouter)
 
@@ -30,6 +36,36 @@ const routes = [
         path: '/Home',
         name: 'Home',
         component: Home
+      },
+      {
+        path: '/aboutus',
+        name: 'AboutUs',
+        component: AboutUs
+      },
+      {
+        path: '/survey',
+        name: 'Survey',
+        component: Survey
+      },
+      {
+        path: '/business',
+        name: 'Business',
+        component: Business
+      },
+      {
+        path: '/culture',
+        name: 'Culture',
+        component: Culture
+      },
+      {
+        path: '/shownews',
+        name: 'ShowNews',
+        component: ShowNews
+      },
+      {
+        path: '/contact',
+        name: 'Contact',
+        component: Contact
       }
       // {
       //   path: '/login',

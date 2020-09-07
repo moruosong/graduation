@@ -3,11 +3,12 @@
     <el-aside v-if="isCollapse" class="hidden-sm-and-up">
       <el-menu :router="true" @select="gotoPage">
         <el-menu-item index="/Home" route="/home">首页</el-menu-item>
-        <el-menu-item index="2">关于我们</el-menu-item>
-        <el-menu-item index="3">集团概况</el-menu-item>
-        <el-menu-item index="4">业务中心</el-menu-item>
-        <el-menu-item index="5">企业文化</el-menu-item>
-        <el-menu-item index="6">新闻动态</el-menu-item>
+        <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
+        <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
+        <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
+        <el-menu-item index="/culture" route="/culture">企业文化</el-menu-item>
+        <el-menu-item index="/shownews" route="/shownews">新闻动态</el-menu-item>
+        <el-menu-item index="/contact" route="/contact">联系我们</el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>
@@ -16,11 +17,12 @@
           <el-col :span="12">
             <el-menu mode="horizontal" :router="true" @select="gotoPage">
               <el-menu-item index="/Home" route="/home">首页</el-menu-item>
-              <el-menu-item index="2">关于我们</el-menu-item>
-              <el-menu-item index="3">集团概况</el-menu-item>
-              <el-menu-item index="4">业务中心</el-menu-item>
-              <el-menu-item index="5">企业文化</el-menu-item>
-              <el-menu-item index="6">新闻动态</el-menu-item>
+              <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
+              <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
+              <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
+              <el-menu-item index="/culture" route="/culture">企业文化</el-menu-item>
+              <el-menu-item index="/shownews" route="/shownews">新闻动态</el-menu-item>
+              <el-menu-item index="/contact" route="/contact">联系我们</el-menu-item>
             </el-menu>
           </el-col>
           <el-col :span="12">
@@ -40,6 +42,12 @@
         </el-row>
       </el-header>
       <el-main style="width: 100%; height: 100%">
+        <el-carousel height="500px">
+          <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
+            <el-image :src="item" style="width: 100%; height: 100%" fit="cover" />
+          </el-carousel-item>
+        </el-carousel>
+        <el-divider />
         <router-view />
       </el-main>
       <el-footer>
@@ -56,18 +64,13 @@ export default {
   name: 'Index',
   data() {
     return {
-      activeName: 'first',
+      activeName: '/Home',
       isCollapse: false,
-      logourl: require('../assets/img/logo1.jpg'),
+      logourl: require('../assets/img/newlogo.jpg'),
       rotation: [
         require('../assets/img/rotation1.jpg'),
         require('../assets/img/rotation2.jpg'),
         require('../assets/img/rotation3.jpg')
-      ],
-      rotation2: [
-        require('../assets/img/rotation2-1.jpg'),
-        require('../assets/img/rotation2-2.jpg'),
-        require('../assets/img/rotation2-3.jpg')
       ]
     }
   },
