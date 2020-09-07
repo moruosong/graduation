@@ -26,7 +26,7 @@
       </el-table-column>
     </el-table>
     <el-dialog
-      title="添加新闻"
+      :title="dlgtitle+'新闻'"
       :visible.sync="dlg"
       width="60%"
       @closed="handelDlgClose"
@@ -67,6 +67,7 @@ export default {
     return {
       newsList: [],
       dlg: false,
+      dlgtitle: '添加',
       form: {
         title: '',
         content: '',
@@ -96,6 +97,7 @@ export default {
       }
     },
     handleUpdate(id) {
+      this.dlgtitle = '修改'
       this.$http({
         method: 'post',
         url: '/news/getNewsById',
@@ -125,6 +127,7 @@ export default {
       }).then(res => {
         console.log(res)
         this.dlg = false
+        this.dlgtitle = '添加'
         if (res.data.success) {
           console.log(this.form.isAdd, this.form.isAdd === 0)
           if (this.form.isAdd === 0) {
