@@ -2,7 +2,7 @@
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
       <span>轮播图管理</span>
-      <el-button size="small" type="primary" @click="showBanner = true">效果预览</el-button>
+      <!-- <el-button size="small" type="primary" @click="showBanner = true">效果预览</el-button> -->
       <el-upload
         class="upload-demo"
         :limit="5"
