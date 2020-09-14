@@ -17,6 +17,8 @@ import Business from '../views/business/index.vue'
 import Culture from '../views/culture/index.vue'
 import ShowNews from '../views/news/index.vue'
 import Contact from '../views/contact/index.vue'
+import Ability from '../views/ability/index.vue'
+import Joinus from '../views/joinus/index.vue'
 
 Vue.use(VueRouter)
 
@@ -66,6 +68,16 @@ const routes = [
         path: '/contact',
         name: 'Contact',
         component: Contact
+      },
+      {
+        path: '/ability',
+        name: 'Ability',
+        component: Ability
+      },
+      {
+        path: '/joinus',
+        name: 'Joinus',
+        component: Joinus
       }
       // {
       //   path: '/login',

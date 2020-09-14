@@ -8,6 +8,7 @@
         <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
         <el-menu-item index="/culture" route="/culture">企业文化</el-menu-item>
         <el-menu-item index="/shownews" route="/shownews">新闻动态</el-menu-item>
+        <el-menu-item index="/ability" route="/ability">人才理念</el-menu-item>
         <el-menu-item index="/contact" route="/contact">联系我们</el-menu-item>
       </el-menu>
     </el-aside>
@@ -22,6 +23,7 @@
               <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
               <el-menu-item index="/culture" route="/culture">企业文化</el-menu-item>
               <el-menu-item index="/shownews" route="/shownews">新闻动态</el-menu-item>
+              <el-menu-item index="/ability" route="/ability">人才理念</el-menu-item>
               <el-menu-item index="/contact" route="/contact">联系我们</el-menu-item>
             </el-menu>
           </el-col>
@@ -42,12 +44,18 @@
         </el-row>
       </el-header>
       <el-main style="width: 100%; height: 100%">
-        <el-carousel height="500px">
+        <el-carousel v-show="isTrue" height="500px">
           <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
             <el-image :src="item" style="width: 100%; height: 100%" fit="cover" />
           </el-carousel-item>
         </el-carousel>
-        <el-divider />
+        <el-divider v-if="isTrue" />
+        <el-image
+          v-if="!isTrue"
+          style="width: 100%; height: 100%"
+          :src="pic"
+          fit="none"
+        />
         <router-view />
       </el-main>
       <el-footer>
@@ -71,12 +79,26 @@ export default {
         require('../assets/img/rotation1.jpg'),
         require('../assets/img/rotation2.jpg'),
         require('../assets/img/rotation3.jpg')
-      ]
+      ],
+      isTrue: true,
+      pic: require('@/assets/img/4857061.jpg')
+    }
+  },
+  mounted() {
+    if (this.$router.history.current.path === '/ability' || this.$router.history.current.path === '/joinus') {
+      this.isTrue = false
+    } else {
+      this.isTrue = true
     }
   },
   methods: {
     gotoPage(index, indexPath) {
       console.log(index, indexPath)
+      if (index === '/ability') {
+        this.isTrue = false
+      } else {
+        this.isTrue = true
+      }
     }
   }
 }
