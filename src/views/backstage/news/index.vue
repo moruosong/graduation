@@ -22,6 +22,7 @@
       >
         <template scope="scope">
           <el-button type="primary" size="small" @click="handleUpdate(scope.row.id)">修改</el-button>
+          <el-button type="danger" size="small" @click="handleDel(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -30,10 +31,21 @@
       :visible.sync="dlg"
       width="60%"
       @closed="handelDlgClose"
+      @open="handleDlgOpen"
     >
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="标题">
           <el-input v-model="form.title" />
+        </el-form-item>
+        <el-form-item label="分类">
+          <el-select v-model="form.type" placeholder="请选择">
+            <el-option
+              v-for="(item, index) in typeList"
+              :key="index"
+              :label="item"
+              :value="index"
+            />
+          </el-select>
         </el-form-item>
         <el-form-item label="内容">
           <el-input v-model="form.content" type="textarea" :rows="10" />
@@ -43,9 +55,10 @@
             class="upload-demo"
             :limit="5"
             action="http://localhost:8888/api/news/uploadPic"
-            :file-list="form.imageList"
+            :file-list="fileList"
             :before-upload="beforeUpload"
             :on-success="handleSuccess"
+            :on-remove="handleRemove"
             list-type="picture"
           >
             <el-button size="small" type="primary">点击上传</el-button>
@@ -70,10 +83,13 @@ export default {
       dlgtitle: '添加',
       form: {
         title: '',
+        type: '',
         content: '',
         picList: [],
-        isAdd: 0
-      }
+        isAdd: '0'
+      },
+      typeList: [],
+      fileList: []
     }
   },
   mounted() {
@@ -88,13 +104,52 @@ export default {
     })
   },
   methods: {
+    handleDel(id) {
+      this.$http({
+        method: 'post',
+        url: '/news/deleteNews',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: { id: id + '', status: '1' }
+      }).then(res => {
+        if (res.data.success) {
+          this.newsList.forEach((item, index) => {
+            if (item.id === id) {
+              this.newsList.splice(index, 1)
+              return
+            }
+          })
+          this.$message({
+            message: res.data.msg,
+            type: 'success'
+          })
+        } else {
+          this.$message({
+            message: res.data.msg,
+            type: 'error'
+          })
+        }
+      })
+    },
+    handleDlgOpen() {
+      this.$http({
+        method: 'post',
+        url: '/news/getAllNewsType',
+        headers: { 'Content-Type': 'application/json' }
+      }).then(res => {
+        console.log(res)
+        this.typeList = res.data.object
+      })
+    },
     handelDlgClose() {
+      this.dlgtitle = '添加'
       this.form = {
         title: '',
+        type: '',
         content: '',
         picList: [],
-        isAdd: 0
+        isAdd: '0'
       }
+      this.fileList = []
     },
     handleUpdate(id) {
       this.dlgtitle = '修改'
@@ -108,8 +163,11 @@ export default {
         if (res.data.success) {
           this.dlg = true
           this.form = res.data.object
-          this.form.isAdd = 1
-          console.log(this.form)
+          this.form.isAdd = '1'
+          res.data.object.picList.forEach(item => {
+            const file = { name: item.newName, url: item.path }
+            this.fileList.push(file)
+          })
         } else {
           this.$message({
             message: res.data.msg,
@@ -119,6 +177,7 @@ export default {
       })
     },
     handelSubmit() {
+      console.log(this.form)
       this.$http({
         method: 'post',
         url: '/news/toDoNews',
@@ -129,15 +188,16 @@ export default {
         this.dlg = false
         this.dlgtitle = '添加'
         if (res.data.success) {
-          console.log(this.form.isAdd, this.form.isAdd === 0)
-          if (this.form.isAdd === 0) {
-            this.newsList.push(res.data.object)
+          console.log(this.form.isAdd, this.form.isAdd === '0')
+          if (this.form.isAdd === '0') {
+            this.newsList.splice(0, 0, res.data.object)
             console.log(this.newsList)
           }
-          if (this.form.isAdd === 1) {
-            this.newsList.forEach(item => {
+          if (this.form.isAdd === '1') {
+            this.newsList.forEach((item, index) => {
               if (item.id === res.data.object.id) {
-                item = res.data.object
+                this.newsList.splice(index, 1)
+                this.newsList.splice(0, 0, res.data.object)
               }
             })
           }
@@ -153,9 +213,25 @@ export default {
         }
       })
     },
+    // 删除文件之前的钩子函数
+    handleRemove(file, fileList) {
+      console.log(file, fileList)
+      this.form.picList.forEach((item, index) => {
+        if (item.newName === file.name) {
+          this.form.picList.splice(index, 1)
+          return
+        }
+      })
+      this.$message({
+        type: 'info',
+        message: '已删除原有图片',
+        duration: 6000
+      })
+    },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
       console.log(res)
+      this.form.picList.push(...res.object)
       this.$message({
         type: 'info',
         message: '图片上传成功',

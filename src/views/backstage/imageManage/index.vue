@@ -2,8 +2,9 @@
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
       <span>轮播图管理</span>
-      <!-- <el-button size="small" type="primary" @click="showBanner = true">效果预览</el-button> -->
+      <el-button size="small" type="primary" @click="lookBanner">效果预览</el-button>
       <el-upload
+        ref="upload"
         class="upload-demo"
         :limit="5"
         action="http://localhost:8888/api/banner/uploadBanner"
@@ -12,7 +13,7 @@
         :on-success="handleSuccess"
         :on-exceed="onExceed"
         :on-preview="handlePreview"
-        :file-list="fileList"
+        :show-file-list="false"
         list-type="picture"
       >
         <el-button size="small" type="primary">点击上传</el-button>
@@ -47,7 +48,7 @@
         width="200"
       >
         <template scope="scope">
-          <el-button type="danger" size="small" @click="handleStatusChange(scope.row.id, '1')">删除</el-button>
+          <el-button type="danger" size="small" @click="handleDelate(scope.row.id, '1')">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -83,17 +84,20 @@ export default {
     }).then(res => {
       console.log(res)
       this.fileList = res.data.object
-      this.fileList.forEach(item => {
-        item.path = require('@/assets/img' + item.path)
-        this.rotation.push(item.path)
-      })
     })
   },
   methods: {
-    handleStatusChange(id, status) {
+    lookBanner() {
+      this.showBanner = true
+      this.rotation = []
+      this.fileList.forEach(item => {
+        this.rotation.push(item.path)
+      })
+    },
+    handleDelate(id, status) {
       this.$http({
         method: 'post',
-        url: '/banner/switchStatus',
+        url: '/banner/deleteBanner',
         data: { id: id, status: status },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(res => {
@@ -119,10 +123,10 @@ export default {
     },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
-      console.log('成功', res)
       this.fileList.push(...res.object)
+      this.$refs.upload.clearFiles()
       this.$message({
-        type: 'info',
+        type: 'success',
         message: '图片上传成功',
         duration: 6000
       })
@@ -172,9 +176,9 @@ export default {
 </script>
 
 <style lang="less" scope>
-.el-upload-list {
-  display: none
-}
+// .el-upload-list {
+//   display: none
+// }
 .card-hrader{
   display: flex;
   flex-direction: row;
