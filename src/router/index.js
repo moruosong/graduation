@@ -19,6 +19,7 @@ import ShowNews from '../views/news/index.vue'
 import Contact from '../views/contact/index.vue'
 import Ability from '../views/ability/index.vue'
 import Joinus from '../views/joinus/index.vue'
+import Recruit from '../views/backstage/recruit/index.vue'
 
 Vue.use(VueRouter)
 
@@ -122,6 +123,10 @@ const routes = [
       {
         path: '/notices',
         component: Notices
+      },
+      {
+        path: '/recruit',
+        component: Recruit
       }
     ]
   }

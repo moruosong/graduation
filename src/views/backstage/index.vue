@@ -37,6 +37,10 @@
             <i class="el-icon-s-cooperation" />
             <span slot="title">公告管理</span>
           </el-menu-item>
+          <el-menu-item index="/recruit">
+            <i class="el-icon-s-order" />
+            <span slot="title">招聘信息</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
