@@ -36,7 +36,7 @@
             <el-button size="small" type="danger" @click="handleDel(scope.row.username)">删除</el-button>
           </div>
           <div v-else>
-            <span>超级管理员不可修改</span>
+            <span>不可修改</span>
           </div>
         </template>
       </el-table-column>

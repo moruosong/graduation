@@ -8,7 +8,22 @@
       <el-table-column
         prop="title"
         label="标题"
-        width="100"
+        width="200"
+      />
+      <el-table-column
+        :show-overflow-tooltip="true"
+        label="分类"
+        width="200"
+      >
+        <template scope="scope">
+          <span>{{ typeList[scope.row.type] }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        :show-overflow-tooltip="true"
+        prop="createTime"
+        label="创建时间"
+        width="200"
       />
       <el-table-column
         :show-overflow-tooltip="true"
@@ -95,6 +110,14 @@ export default {
   mounted() {
     this.$http({
       method: 'post',
+      url: '/news/getAllNewsType',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+      console.log(res)
+      this.typeList = res.data.object
+    })
+    this.$http({
+      method: 'post',
       url: '/news/getAllNews',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
@@ -131,14 +154,6 @@ export default {
       })
     },
     handleDlgOpen() {
-      this.$http({
-        method: 'post',
-        url: '/news/getAllNewsType',
-        headers: { 'Content-Type': 'application/json' }
-      }).then(res => {
-        console.log(res)
-        this.typeList = res.data.object
-      })
     },
     handelDlgClose() {
       this.dlgtitle = '添加'

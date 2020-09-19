@@ -8,7 +8,7 @@
       <el-table-column
         prop="title"
         label="标题"
-        width="100"
+        width="200"
       />
       <el-table-column
         :show-overflow-tooltip="true"
