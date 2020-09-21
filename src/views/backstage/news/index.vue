@@ -69,7 +69,7 @@
           <el-upload
             class="upload-demo"
             :limit="5"
-            action="http://localhost:8888/api/news/uploadPic"
+            action="http://124.71.173.149:8888/api/news/uploadPic"
             :file-list="fileList"
             :before-upload="beforeUpload"
             :on-success="handleSuccess"

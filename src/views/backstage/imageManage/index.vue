@@ -7,7 +7,7 @@
         ref="upload"
         class="upload-demo"
         :limit="5"
-        action="http://localhost:8888/api/banner/uploadBanner"
+        action="http://124.71.173.149:8888/api/banner/uploadBanner"
         :before-upload="beforeUpload"
         :on-error="handleError"
         :on-success="handleSuccess"
