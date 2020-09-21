@@ -1,14 +1,14 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="8" :xs="24">
+      <el-col :span="8" :xs="24" :md="24">
         <el-carousel :interval="4000" type="card" height="200px">
           <el-carousel-item v-for="(item, index) in rotation2" :key="index">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
         </el-carousel>
       </el-col>
-      <el-col :span="16" :xs="24">
+      <el-col :span="16" :xs="24" :md="24">
         <el-tabs v-model="activeName" type="card">
           <el-tab-pane label="集团动态" name="first">集团动态</el-tab-pane>
           <el-tab-pane label="行业新闻" name="second">行业新闻</el-tab-pane>
@@ -19,7 +19,7 @@
     </el-row>
     <el-divider />
     <el-row style="margin-left: 100px;margin-right: 100px;">
-      <el-col v-for="(item, index) in pics" :key="index" :span="6" :xs="12">
+      <el-col v-for="(item, index) in pics" :key="index" :span="6" :xs="12" :md="12">
         <el-image
           style="width: 100%; height: 200px"
           :src="item"

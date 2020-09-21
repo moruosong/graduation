@@ -1,6 +1,6 @@
 <template>
   <el-container class="all">
-    <el-aside v-if="isCollapse" class="hidden-sm-and-up" style="padding: 0 0 0 0">
+    <el-aside v-if="isCollapse" class="hidden-md-and-up" style="padding: 0 0 0 0">
       <el-menu :router="true" style="width: 100%; height: 100%;" @select="gotoPage">
         <el-menu-item index="/Home" route="/home">首页</el-menu-item>
         <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
@@ -13,7 +13,7 @@
       </el-menu>
     </el-aside>
     <el-container>
-      <el-header class="hidden-xs-only">
+      <el-header class="hidden-sm-and-down">
         <el-row>
           <el-col :span="12">
             <el-menu mode="horizontal" :router="true" @select="gotoPage">
@@ -32,7 +32,7 @@
           </el-col>
         </el-row>
       </el-header>
-      <el-header class="hidden-sm-and-up">
+      <el-header class="hidden-md-and-up">
         <el-row style="width: 100%; height: 100%">
           <el-col :span="4">
             <el-button v-if="isCollapse" icon="el-icon-s-fold" @click="() => isCollapse = !isCollapse" />
