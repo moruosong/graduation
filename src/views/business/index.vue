@@ -6,7 +6,7 @@
       fit="cover"
     />
     <el-row>
-      <el-col :span="4" :xs="8" :md="8">
+      <el-col :span="4" :xs="8">
         <i><span style="color: rgb(254, 191, 44);font-size: 40px;"><b>A. 文旅</b></span></i>
         <div class="textcontent">
           <p>
@@ -16,21 +16,21 @@
           </p>
         </div>
       </el-col>
-      <el-col :span="8" :xs="16" :md="16">
+      <el-col :span="8" :xs="16">
         <el-image
           :src="travel"
           style="width: 100%; height: 300px"
           fit="cover"
         />
       </el-col>
-      <el-col :span="8" :xs="16" :md="16">
+      <el-col :span="8" :xs="16">
         <el-image
           :src="movies"
           style="width: 100%; height: 300px"
           fit="cover"
         />
       </el-col>
-      <el-col :span="4" :xs="8" :md="8">
+      <el-col :span="4" :xs="8">
         <i><span style="color: rgb(252, 102, 35);font-size: 40px;"><b>B. 影视</b></span></i>
         <div class="textcontent">
           <p>
@@ -43,7 +43,7 @@
     </el-row>
     <br><br>
     <el-row>
-      <el-col :span="4" :xs="8" :md="8">
+      <el-col :span="4" :xs="8">
         <i><span style="color: rgb(30, 185, 206);font-size: 40px;"><b>C. 体育</b></span></i>
         <div class="textcontent">
           <p>
@@ -53,21 +53,21 @@
           </p>
         </div>
       </el-col>
-      <el-col :span="8" :xs="16" :md="16">
+      <el-col :span="8" :xs="16">
         <el-image
           :src="sports"
           style="width: 100%; height: 300px"
           fit="cover"
         />
       </el-col>
-      <el-col :span="8" :xs="16" :md="16">
+      <el-col :span="8" :xs="16">
         <el-image
           :src="agriculture"
           style="width: 100%; height: 300px"
           fit="cover"
         />
       </el-col>
-      <el-col :span="4" :xs="8" :md="8">
+      <el-col :span="4" :xs="8">
         <i><span style="color: rgb(40, 188, 150);font-size: 40px;"><b>D. 大农业</b></span></i>
         <div class="textcontent">
           <p>
