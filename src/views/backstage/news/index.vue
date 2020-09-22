@@ -113,7 +113,6 @@ export default {
       url: '/news/getAllNewsType',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      console.log(res)
       this.typeList = res.data.object
     })
     this.$http({
@@ -121,7 +120,6 @@ export default {
       url: '/news/getAllNews',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      console.log(res)
       this.page = res.data.object
       this.newsList = res.data.object.list
     })
@@ -174,7 +172,6 @@ export default {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: { id: id }
       }).then(res => {
-        console.log(res)
         if (res.data.success) {
           this.dlg = true
           this.form = res.data.object
@@ -192,7 +189,6 @@ export default {
       })
     },
     handelSubmit() {
-      console.log(this.form)
       this.$http({
         method: 'post',
         url: '/news/toDoNews',
@@ -203,14 +199,13 @@ export default {
         this.dlg = false
         this.dlgtitle = '添加'
         if (res.data.success) {
-          console.log(this.form.isAdd, this.form.isAdd === '0')
           if (this.form.isAdd === '0') {
             this.newsList.splice(0, 0, res.data.object)
-            console.log(this.newsList)
           }
           if (this.form.isAdd === '1') {
             this.newsList.forEach((item, index) => {
               if (item.id === res.data.object.id) {
+                console.log('item', item)
                 this.newsList.splice(index, 1)
                 this.newsList.splice(0, 0, res.data.object)
               }
@@ -230,7 +225,6 @@ export default {
     },
     // 删除文件之前的钩子函数
     handleRemove(file, fileList) {
-      console.log(file, fileList)
       this.form.picList.forEach((item, index) => {
         if (item.newName === file.name) {
           this.form.picList.splice(index, 1)
@@ -245,7 +239,6 @@ export default {
     },
     // 文件上传成功的钩子函数
     handleSuccess(res, file) {
-      console.log(res)
       this.form.picList.push(...res.object)
       this.$message({
         type: 'info',
@@ -256,7 +249,6 @@ export default {
     // 文件上传前的前的钩子函数
     // 参数是上传的文件，若返回false，或返回Primary且被reject，则停止上传
     beforeUpload(file) {
-      console.log(file)
       const isJPG = file.type === 'image/jpeg'
       const isGIF = file.type === 'image/gif'
       const isPNG = file.type === 'image/png'

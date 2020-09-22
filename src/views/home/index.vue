@@ -1,19 +1,33 @@
 <template>
   <div>
-    <el-row>
+    <el-row :gutter="10">
       <el-col :span="8" :xs="24">
-        <el-carousel :interval="4000" type="card" height="200px">
+        <el-carousel :interval="4000" type="card" height="250px">
           <el-carousel-item v-for="(item, index) in rotation2" :key="index">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
         </el-carousel>
       </el-col>
       <el-col :span="16" :xs="24">
-        <el-tabs v-model="activeName" type="card">
-          <el-tab-pane label="集团动态" name="first">集团动态</el-tab-pane>
-          <el-tab-pane label="行业新闻" name="second">行业新闻</el-tab-pane>
-          <el-tab-pane label="媒体聚焦" name="third">媒体聚焦</el-tab-pane>
-          <el-tab-pane label="集团公告" name="fourth">集团公告</el-tab-pane>
+        <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane v-for="(value, key) in typeList" :key="key" :label="value" :name="key">
+            <div v-if="newList.length > 0">
+              <ul style="list-style: none">
+                <li v-for="(item, index) in newList" :key="index">
+                  <a href="#">
+                    <div style="text-align:left">
+                      <span class="newsTitle">{{ item.title }}</span>
+                      <span class="newsDate">{{ item.createTime }}</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div v-else><span class="newsTitle">暂无相关数据</span></div>
+          </el-tab-pane>
+          <el-tab-pane>
+            <span slot="label"><el-link type="primary" href="#/shownews">>>更多</el-link></span>
+          </el-tab-pane>
         </el-tabs>
       </el-col>
     </el-row>
@@ -35,7 +49,9 @@ export default {
   name: 'Home',
   data() {
     return {
-      activeName: 'first',
+      typeList: {},
+      newList: [],
+      activeName: '1',
       rotation: [
         require('@/assets/img/rotation1.jpg'),
         require('@/assets/img/rotation2.jpg'),
@@ -53,11 +69,64 @@ export default {
         require('@/assets/img/1591342200(1).jpg')
       ]
     }
+  },
+  mounted() {
+    this.$http({
+      method: 'post',
+      url: '/news/getAllNewsType',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+      this.typeList = res.data.object
+    })
+    this.$http({
+      method: 'post',
+      url: '/news/getNewsByType',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: { type: 1 }
+    }).then(res => {
+      this.newList = res.data.object.slice(0, 5)
+    })
+  },
+  methods: {
+    handleClick(evn) {
+      this.$http({
+        method: 'post',
+        url: '/news/getNewsByType',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: { type: evn.index - 0 + 1 }
+      }).then(res => {
+        this.newList = res.data.object.slice(0, 5)
+      })
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.newsTitle {
+  text-align: left;
+  margin-left: 10px;
+  line-height: 24px;
+  font-family: 'Microsoft YaHei';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  color: #404040;
+  text-decoration: none;
+ }
+.newsDate {
+  text-align: right;
+  padding: 0;
+  margin-left: 30px;
+  margin-top: 10px;
+  display: inline-block;
+  font-family: 'Microsoft YaHei';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  color: #BBB;
+  text-decoration: none;
+ }
 .box{
 	width: 200px;
 	height:200px;
