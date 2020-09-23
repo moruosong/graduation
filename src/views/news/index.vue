@@ -19,15 +19,15 @@
         <div class="divBorder" style="text-align: left; margin-top: 20px;">
           <div>
             <a href="#">
-              <span style="font-size: 18px">网址：</span>
-              <span style="font-size: 18px">www.zhongzhenrc.com</span>
+              <span style="font-size: 16px; line-height:30px">网址：</span>
+              <span style="font-size: 16px; line-height:30px">www.zhongzhenrc.com</span>
             </a>
           </div>
-          <div><span style="color:#cc0000;font-size: 18px">中稹融创实业集团有限公司</span></div>
-          <div><span style="font-size: 18px">地址：四川省成都市高新区天府四街158号</span></div>
+          <div><span style="color:#cc0000;font-size: 16px; line-height:30px">中稹融创实业集团有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
           <br>
-          <div><span style="color:#cc0000; font-size: 18px">四川中稹滨海置业有限公司</span></div>
-          <div><span style="font-size: 18px">地址：四川省成都市高新区天府四街158号</span></div>
+          <div><span style="color:#cc0000; font-size: 16px; line-height:30px">四川中稹滨海置业有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
         </div>
       </el-col>
       <el-col :span="18">
