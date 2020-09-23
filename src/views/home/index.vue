@@ -1,23 +1,29 @@
 <template>
   <div>
     <el-row :gutter="10">
-      <el-col :span="8" :xs="24">
-        <el-carousel :interval="4000" type="card" height="250px">
+      <el-col :span="10" :xs="24">
+        <el-carousel :interval="4000" type="card" height="400px">
           <el-carousel-item v-for="(item, index) in rotation2" :key="index">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
         </el-carousel>
       </el-col>
-      <el-col :span="16" :xs="24">
+      <el-col :span="14" :xs="24">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane v-for="(value, key) in typeList" :key="key" :label="value" :name="key">
             <div v-if="newList.length > 0">
               <ul style="list-style: none">
                 <li v-for="(item, index) in newList" :key="index">
-                  <a href="#">
-                    <div style="text-align:left">
-                      <span class="newsTitle">{{ item.title }}</span>
-                      <span class="newsDate">{{ item.createTime }}</span>
+                  <a href="#/shownews">
+                    <div style="text-align:left;margin-top: 10px;">
+                      <el-row>
+                        <el-col :span="16">
+                          <span class="newsTitle">{{ item.title }}</span>
+                        </el-col>
+                        <el-col :span="8">
+                          <span class="newsDate">{{ item.createTime }}</span>
+                        </el-col>
+                      </el-row>
                     </div>
                   </a>
                 </li>
@@ -33,7 +39,7 @@
     </el-row>
     <el-divider />
     <el-row style="margin-left: 100px;margin-right: 100px;">
-      <el-col v-for="(item, index) in pics" :key="index" :span="6" :xs="12" :sm="12">
+      <el-col v-for="(item, index) in pics" :key="index" :span="6" :xs="12">
         <el-image
           style="width: 100%; height: 200px"
           :src="item"
@@ -108,7 +114,7 @@ export default {
   margin-left: 10px;
   line-height: 24px;
   font-family: 'Microsoft YaHei';
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: normal;
   color: #404040;
@@ -118,10 +124,9 @@ export default {
   text-align: right;
   padding: 0;
   margin-left: 30px;
-  margin-top: 10px;
   display: inline-block;
   font-family: 'Microsoft YaHei';
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
   color: #BBB;

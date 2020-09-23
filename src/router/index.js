@@ -20,6 +20,7 @@ import Contact from '../views/contact/index.vue'
 import Ability from '../views/ability/index.vue'
 import Joinus from '../views/joinus/index.vue'
 import Recruit from '../views/backstage/recruit/index.vue'
+import NewList from '../views/news/newlist/index.vue'
 
 Vue.use(VueRouter)
 
@@ -63,7 +64,13 @@ const routes = [
       {
         path: '/shownews',
         name: 'ShowNews',
-        component: ShowNews
+        component: ShowNews,
+        children: [
+          {
+            path: '/newList',
+            component: NewList
+          }
+        ]
       },
       {
         path: '/contact',
