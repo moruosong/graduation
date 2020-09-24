@@ -9,11 +9,14 @@ import Card100 from '@/views/components/Card100'
 import './styles/element-variables.scss'
 import axios from 'axios'
 import '@/styles/index.scss' // global css
+import BaiduMap from 'vue-baidu-map'
 
 // import queryString from 'queryString'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+
+Vue.use(BaiduMap, { ak: 'BjRWoNr9jEAonG7bmNs2eqiGpZxo6Pbv' })
 
 Vue.prototype.$http = axios
 axios.defaults.baseURL = 'http://124.71.173.149:8888/api'

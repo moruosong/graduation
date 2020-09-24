@@ -57,10 +57,12 @@
           fit="fill"
         />
         <router-view />
+        <div class="foot">
+          <span style="font-family: Tahoma;color: #f3f3f3;font-size: 14px;line-height: 47px;">版权所有: 中稹集团 地址: 四川省成都市高新区天府四街158号</span>
+        </div>
       </el-main>
-      <el-footer>
-        <el-link href="#/login" target="_blank">后台登录</el-link>
-      </el-footer>
+      <!--<el-footer>
+      </el-footer>-->
     </el-container>
   </el-container>
 </template>
@@ -112,6 +114,16 @@ export default {
 }
 </script>
 <style lang="less">
+  .foot{
+    text-align: center;
+    font: 12px/1 "Microsoft YaHei","微软雅黑","arial","tahoma","MicrosoftJhengHei";
+    background-color: rgb(228, 57, 60);
+    background-image: none;
+    background-position: 50% 50%;
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: -1;
+  }
   .menuDiv {
     margin: 0, 100px;
     height: 100px

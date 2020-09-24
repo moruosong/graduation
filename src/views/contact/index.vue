@@ -1,11 +1,60 @@
 <template>
-  <div>
-    联系我们
+  <div style="margin: 10px">
+    <el-row>
+      <el-col :span="12" :xs="24">
+        <div class="divBorder" style="text-align: center; margin-top: 20px;">
+          <div>
+            <a href="#">
+              <span style="font-size: 16px; line-height:30px">网址：</span>
+              <span style="font-size: 16px; line-height:30px">www.zhongzhenrc.com</span>
+            </a>
+          </div>
+          <div><span style="color:#cc0000;font-size: 16px; line-height:30px">中稹融创实业集团有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
+          <br>
+          <div><span style="color:#cc0000; font-size: 16px; line-height:30px">四川中稹滨海置业有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
+        </div>
+      </el-col>
+      <el-col :span="6">
+        <div style="text-align: right">
+          <baidu-map
+            id="allmap"
+            :scroll-wheel-zoom="true"
+            :zoom="zoom"
+            @ready="mapReady"
+          >
+            <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE" />
+          </baidu-map>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Contact'
+  name: 'Contact',
+  data() {
+    return {
+      point: '',
+      zoom: 13
+    }
+  },
+  methods: {
+    mapReady({ BMap, map }) {
+      // 选择一个经纬度作为中心点
+      this.point = new BMap.Point(104.06306, 30.54282)
+      map.centerAndZoom(this.point, 12)
+    }
+  }
 }
 </script>
+<style lang="less" scoped>
+/* 设定地图的大小 */
+#allmap{
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+}
+</style>>

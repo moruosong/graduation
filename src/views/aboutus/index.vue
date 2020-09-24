@@ -1,11 +1,10 @@
 <template>
   <div style="padding-left: 200px">
-    <div />
     <span style="float: left">公司简介</span><br>
     <el-divider />
     <div style="float: left; margin-right: 26px">
       <el-image
-        style="width: 100%; height: 660px"
+        style="width: 100%; height: 650px"
         :src="pic"
         fit="contain"
       />
