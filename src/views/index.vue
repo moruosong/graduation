@@ -1,7 +1,7 @@
 <template>
   <el-container class="all">
     <el-aside v-if="isCollapse" class="hidden-md-and-up" style="padding: 0 0 0 0">
-      <el-menu :router="true" style="width: 100%; height: 100%;" @select="gotoPage">
+      <el-menu :default-active="activeName" :router="true" style="width: 100%; height: 100%;" @select="gotoPage">
         <el-menu-item index="/Home" route="/home">首页</el-menu-item>
         <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
         <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
@@ -16,7 +16,7 @@
       <el-header class="hidden-sm-and-down">
         <el-row>
           <el-col :span="12">
-            <el-menu mode="horizontal" :router="true" @select="gotoPage">
+            <el-menu :default-active="activeName" mode="horizontal" :router="true" @select="gotoPage">
               <el-menu-item index="/Home" route="/home">首页</el-menu-item>
               <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
               <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
@@ -46,7 +46,7 @@
       <el-main style="width: 100%; height: 100%">
         <el-carousel v-show="isTrue" height="500px">
           <el-carousel-item v-for="(item, index) in rotation" :key="index" style="background-color: #d3dce6;">
-            <el-image :src="item" style="width: 100%; height: 100%" fit="cover" />
+            <el-image :src="item.path" style="width: 100%; height: 100%" fit="cover" />
           </el-carousel-item>
         </el-carousel>
         <el-divider v-if="isTrue" />
@@ -85,6 +85,14 @@ export default {
     }
   },
   mounted() {
+    this.$http({
+      method: 'post',
+      url: '/banner/getAllBanner',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+      console.log(res)
+      this.rotation = res.data.object
+    })
     if (this.$router.history.current.path === '/ability' || this.$router.history.current.path === '/joinus') {
       this.isTrue = false
     } else {

@@ -31,7 +31,7 @@
         </div>
       </el-col>
       <el-col :span="18">
-        <div>
+        <div v-show="newInfo">
           <div v-if="newsList.length > 0">
             <ul style="list-style: none">
               <li v-for="(item, index) in newsList" :key="index">
@@ -56,7 +56,7 @@
                       <span>暂无图片</span>
                     </div>
                   </el-image>
-                  <el-link :underline="false" href="#/newInfo">
+                  <el-link :underline="false" @click="handleNewInfo(item.id)">
                     <span class="newsTitle">{{ item.title }}</span> <br>
                     <span class="newsDate">{{ item.createTime }}</span>
                   </el-link>
@@ -68,22 +68,34 @@
             <span>暂无数据</span>
           </div>
         </div>
+        <div v-show="!newInfo">
+          <new-info :news="news" />
+        </div>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import NewInfo from './newInfo/index'
+
 export default {
   name: 'ShowNews',
+  components: { NewInfo },
   data() {
     return {
+      newInfo: true,
       typeList: [],
       typeIndex: '0',
-      newsList: []
+      newsList: [],
+      news: {}
     }
   },
   mounted() {
+    const id = this.$route.query.id
+    if (id) {
+      this.handleNewInfo(id)
+    }
     this.$http({
       method: 'post',
       url: '/news/getAllNewsType',
@@ -101,7 +113,22 @@ export default {
     })
   },
   methods: {
+    handleNewInfo(id) {
+      this.newInfo = false
+      this.$http({
+        method: 'post',
+        url: '/news/getNewsById',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        data: { id: id }
+      }).then(res => {
+        if (res.data.success) {
+          console.log(res)
+          this.news = res.data.object
+        }
+      })
+    },
     handleSelect(index) {
+      this.newInfo = true
       this.newsList = []
       if (index === '0') {
         this.$http({

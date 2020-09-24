@@ -6,6 +6,7 @@
     </div>
     <el-table :data="newsList" style="width: 100%">
       <el-table-column
+        :show-overflow-tooltip="true"
         prop="title"
         label="标题"
         width="200"
