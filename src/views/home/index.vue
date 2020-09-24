@@ -69,10 +69,10 @@ export default {
         require('@/assets/img/rotation2-3.jpg')
       ],
       pics: [
-        require('@/assets/img/1591342166(1).jpg'),
-        require('@/assets/img/1591342200(1).jpg'),
-        require('@/assets/img/1591342166(1).jpg'),
-        require('@/assets/img/1591342200(1).jpg')
+        require('@/assets/img/bottom01.jpg'),
+        require('@/assets/img/bottom02.jpg'),
+        require('@/assets/img/bottom03.jpg'),
+        require('@/assets/img/bottom04.jpg')
       ]
     }
   },

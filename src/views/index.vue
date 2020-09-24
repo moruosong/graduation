@@ -54,7 +54,7 @@
           v-if="!isTrue"
           style="width: 100%; height: 100%"
           :src="pic"
-          fit="none"
+          fit="fill"
         />
         <router-view />
       </el-main>
@@ -81,7 +81,7 @@ export default {
         require('../assets/img/rotation3.jpg')
       ],
       isTrue: true,
-      pic: require('@/assets/img/4857061.jpg')
+      pic: require('@/assets/img/recruit.jpg')
     }
   },
   mounted() {

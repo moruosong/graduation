@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  name: 'NewList',
+  name: 'NewInfo',
   data() {
     return {
       newsList: []

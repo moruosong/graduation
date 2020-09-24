@@ -31,38 +31,42 @@
         </div>
       </el-col>
       <el-col :span="18">
-        <div v-if="newsList.length > 0">
-          <ul style="list-style: none">
-            <li v-for="(item, index) in newsList" :key="index">
-              <div style="text-align:left;margin-top: 10px;">
-                <el-image
-                  v-if="item.picList && item.picList.length > 0"
-                  style="width: 120px; height: 88px; float: left; margin-right: 10px"
-                  :src="item.picList[0].path"
-                  fit="cover"
-                >
-                  <div slot="error" class="image-slot">
-                    <span>暂无图片</span>
-                  </div>
-                </el-image>
-                <el-image
-                  v-else
-                  style="width: 120px; height: 88px; float: left; margin-right: 10px"
-                  src="#"
-                  fit="cover"
-                >
-                  <div slot="error" class="imageError">
-                    <span>暂无图片</span>
-                  </div>
-                </el-image>
-                <span class="newsTitle">{{ item.title }}</span> <br>
-                <span class="newsDate">{{ item.createTime }}</span>
-              </div><br><br>
-            </li>
-          </ul>
-        </div>
-        <div v-else>
-          <span>暂无数据</span>
+        <div>
+          <div v-if="newsList.length > 0">
+            <ul style="list-style: none">
+              <li v-for="(item, index) in newsList" :key="index">
+                <div style="text-align:left;margin-top: 10px;">
+                  <el-image
+                    v-if="item.picList && item.picList.length > 0"
+                    style="width: 120px; height: 88px; float: left; margin-right: 10px"
+                    :src="item.picList[0].path"
+                    fit="cover"
+                  >
+                    <div slot="error" class="image-slot">
+                      <span>暂无图片</span>
+                    </div>
+                  </el-image>
+                  <el-image
+                    v-else
+                    style="width: 120px; height: 88px; float: left; margin-right: 10px"
+                    src="#"
+                    fit="cover"
+                  >
+                    <div slot="error" class="imageError">
+                      <span>暂无图片</span>
+                    </div>
+                  </el-image>
+                  <el-link :underline="false" href="#/newInfo">
+                    <span class="newsTitle">{{ item.title }}</span> <br>
+                    <span class="newsDate">{{ item.createTime }}</span>
+                  </el-link>
+                </div><br><br>
+              </li>
+            </ul>
+          </div>
+          <div v-else>
+            <span>暂无数据</span>
+          </div>
         </div>
       </el-col>
     </el-row>

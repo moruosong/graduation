@@ -16,8 +16,8 @@ export default {
   data() {
     return {
       picList: [
-        require('@/assets/img/1591342909(1).jpg'),
-        require('@/assets/img/1591343114(1).jpg')
+        require('@/assets/img/culture01.jpg'),
+        require('@/assets/img/culture02.jpg')
       ]
     }
   }

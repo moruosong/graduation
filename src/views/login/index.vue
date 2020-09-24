@@ -1,9 +1,9 @@
 <template>
-  <div class="login_container">
+  <div class="login_container" :style="backgroundimg">
     <div class="login_box">
       <!-- 头像 -->
       <div class="avator_box">
-        <img :src="require('@/assets/img/logo2.png')">
+        <img :src="require('@/assets/img/logo2.jpg')">
       </div>
       <!-- 登陆表单 -->
       <el-form ref="ruleForm" label-width="0px" class="login_form" :model="ruleForm" :rules="rules">
@@ -31,6 +31,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      backgroundimg: 'background-image:url(' + require('@/assets/img/background.jpg') + ')',
       ruleForm: {
         username: '',
         password: ''
@@ -84,7 +85,6 @@ export default {
 
 <style lang="less" scoped>
 .login_container {
-  background-color: #2b4b6b;
   height: 100%;
 }
 
