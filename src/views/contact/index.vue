@@ -24,7 +24,7 @@
             :zoom="zoom"
             @ready="mapReady"
           >
-            <bm-marker :position="point" animation="BMAP_ANIMATION_BOUNCE" />
+            <bm-marker :zoom="zoom" :position="point" animation="BMAP_ANIMATION_BOUNCE" />
           </baidu-map>
         </div>
       </el-col>
@@ -38,14 +38,14 @@ export default {
   data() {
     return {
       point: '',
-      zoom: 13
+      zoom: 20
     }
   },
   methods: {
     mapReady({ BMap, map }) {
       // 选择一个经纬度作为中心点
-      this.point = new BMap.Point(104.06306, 30.54282)
-      map.centerAndZoom(this.point, 12)
+      this.point = new BMap.Point(104.07049, 30.548981)
+      map.centerAndZoom(this.point, this.zoom)
     }
   }
 }
@@ -54,7 +54,7 @@ export default {
 /* 设定地图的大小 */
 #allmap{
   height: 300px;
-  width: 300px;
+  width: 600px;
   margin: 0 auto;
 }
 </style>>
