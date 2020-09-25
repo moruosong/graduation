@@ -2,7 +2,7 @@
   <div>
     <span style="font-size:24px">热招职位</span><br>
     <span style="line-height:2">
-      我们想要与您共同发展！    联系方式：010-52908888    公司地址：北京市朝阳区小营路金盟大厦8层
+      我们想要与您共同发展！    公司地址：四川省成都市高新区天府四街158号
     </span>
     <el-table :data="positionList" style="width: 100%; margin: 20px">
       <el-table-column
@@ -20,7 +20,7 @@
         width="200"
       >
         <template>
-          <el-button type="primary">投递简历</el-button>
+          <!-- <el-button type="primary">投递简历</el-button> -->
         </template>
       </el-table-column>
     </el-table>
@@ -33,7 +33,6 @@ export default {
   data() {
     return {
       positionList: [
-        { name: '会计', need: '无' }
       ]
     }
   }
