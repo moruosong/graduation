@@ -18,11 +18,7 @@
         align="center"
         label="操作"
         width="200"
-      >
-        <template>
-          <!-- <el-button type="primary">投递简历</el-button> -->
-        </template>
-      </el-table-column>
+      />
     </el-table>
   </div>
 </template>
