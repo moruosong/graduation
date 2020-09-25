@@ -58,7 +58,7 @@
         />
         <router-view />
         <div class="foot">
-          <span style="font-family: Tahoma;color: #f3f3f3;font-size: 14px;line-height: 47px;">版权所有: 中稹集团 地址: 四川省成都市高新区天府四街158号</span>
+          <span style="font-family: Tahoma;color: #f3f3f3;font-size: 14px;line-height: 47px;">版权所有: 中稹融创 地址: 四川省成都市高新区天府四街158号</span>
         </div>
       </el-main>
       <!--<el-footer>
