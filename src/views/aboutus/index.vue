@@ -1,49 +1,41 @@
 <template>
-  <div style="padding-left: 200px">
-    <span style="float: left">公司简介</span><br>
-    <el-divider />
-    <div style="float: left; margin-right: 26px">
-      <el-image
-        style="width: 100%; height: 650px"
-        :src="pic"
-        fit="contain"
-      />
-    </div>
-    <div>
-      <div class="textcontent">
-        <p>
-          中稹融创实业集团有限公司，中稹实业集团有限公司（AA+主体评级）全资控股公司，创建于2019年，总部位于成都，注册资本12000万元。集团致力于文旅康养产业、影视文化产业、资产并购、地产开发等产业的投资管理与运营业务，投资项目分布于四川、重庆、贵州、京津冀、海南、香港等地。
-        </p>
-        <p>
-          中稹融创实业集团有限公司，以“产业+金融”的模式，深耕医、食、住、行、游、购、娱、养、教、体、科、运领域，用幸福生态践行者的姿态，聚合全球先进技术、高品质产业资源、高流量企业资源，以“投行思维+产业思维”打通产业和资本的壁垒，展开产业投资，助力城市经济兴旺发展。
-        </p>
-      </div>
-      <br>
-      <div style="text-align: left;">
-        <p>
-          <span style="font-size:33px;font-family:方正毡笔黑简体;color:#A12025;text-shadow:auto;font-weight:bold">双总部产业运营中心</span>
-        </p>
-        <p>
-          <span style="font-size:20px;font-family:方正毡笔黑简体;text-shadow:auto;font-weight:bold">以四川为总部产业中心聚合产业项目</span>
-        </p>
-        <p>
-          <span style="font-size:20px;font-family:方正毡笔黑简体;text-shadow:auto;font-weight:bold">以京津为总部政治中心聚合智库资源</span>
-        </p>
-        <br>
-        <p>
-          <span style="font-size:33px;font-family:方正毡笔黑简体;color:#A12025;text-shadow:auto;font-weight:bold">三大核心区域业务板块</span>
-        </p>
-        <p>
-          <span style="font-size:20px;font-family:方正毡笔黑简体;text-shadow:auto;font-weight:bold">以云贵川渝陕为核心区域产业布局</span>
-        </p>
-        <p>
-          <span style="font-size:20px;font-family:方正毡笔黑简体;text-shadow:auto;font-weight:bold">以京津为核心区域产业布局</span>
-        </p>
-        <p>
-          <span style="font-size:20px;font-family:方正毡笔黑简体;text-shadow:auto;font-weight:bold">以广东香港海南为核心区域产业布局</span>
-        </p>
-      </div>
-    </div>
+  <div style="margin-left: 50px">
+    <el-row>
+      <el-col :span="4">
+        <div>
+          <el-menu
+            :default-active="typeIndex"
+            class="el-menu-vertical-demo"
+            @select="handleSelect"
+          >
+            <el-menu-item v-for="(item, index) in typeList" :key="index" :index="item">
+              <span slot="title">{{ item }}</span>
+            </el-menu-item>
+          </el-menu>
+        </div>
+        <div class="divBorder" style="text-align: left; margin-top: 20px;">
+          <div>
+            <a href="#">
+              <span style="font-size: 16px; line-height:30px">网址：</span>
+              <span style="font-size: 16px; line-height:30px">www.zhongzhenrc.com</span>
+            </a>
+          </div>
+          <div><span style="color:#cc0000;font-size: 16px; line-height:30px">中稹融创实业集团有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
+          <br>
+          <div><span style="color:#cc0000; font-size: 16px; line-height:30px">四川中稹滨海置业有限公司</span></div>
+          <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
+        </div>
+      </el-col>
+      <el-col :span="18">
+        <div>
+          <span style="font-size:30px">{{ typeSelect }}</span>
+          <div style="margin: 0px 20px">
+            <el-divider />
+          </div>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
@@ -51,13 +43,41 @@ export default {
   name: 'AboutUs',
   data() {
     return {
-      pic: require('@/assets/img/1591344687(1).jpg')
+      typeIndex: '项目简介',
+      typeList: [
+        '项目简介', '运营理念', '投资项目', '资源优势', '媒体支持'
+      ],
+      typeSelect: '项目简介'
+    }
+  },
+  methods: {
+    handleSelect(index, indexPath) {
+      console.log(index, indexPath)
+      this.typeSelect = index
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.divBorder {
+    border-radius: 0px;
+    border-right: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+    border-radius: 0px;
+    background-color: transparent;
+    background-image: none;
+    background-repeat: repeat;
+    background-position: 0 0;
+    background: -moz-linear-gradient(top, none, none);
+    background: -o-linear-gradient(top, none, none);
+    background: -ms-linear-gradient(top, none,none);
+    background: linear-gradient(top, none, none);
+    background: -webkit-gradient(linear, left top, left bottom, from(none), to(none));
+    background-size: auto;
+}
 .textcontent {
   text-align: left;
   font-size:17px;
