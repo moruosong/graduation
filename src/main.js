@@ -20,7 +20,7 @@ Vue.use(BaiduMap, { ak: 'BjRWoNr9jEAonG7bmNs2eqiGpZxo6Pbv' })
 
 Vue.prototype.$http = axios
 axios.defaults.baseURL = 'http://124.71.173.149:8888/api'
-axios.defaults.timeout = 1000
+axios.defaults.timeout = 5000
 // axios.defaults.headers = { 'Content-type': 'application/x-www-form-urlencoded' }
 axios.interceptors.request.use(function(config) {
   // 在发送请求之前做些什么

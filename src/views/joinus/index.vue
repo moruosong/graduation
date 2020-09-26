@@ -6,12 +6,12 @@
     </span>
     <el-table :data="positionList" style="width: 100%; margin: 20px">
       <el-table-column
-        prop="name"
+        prop="title"
         label="职位"
-        width="100"
+        width="200"
       />
       <el-table-column
-        prop="need"
+        prop="content"
         label="要求"
       />
       <el-table-column
@@ -31,6 +31,16 @@ export default {
       positionList: [
       ]
     }
+  },
+  mounted() {
+    this.$http({
+      method: 'post',
+      url: '/recruit/getAllRecruit',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => {
+      console.log(res.data.object.list)
+      this.positionList = res.data.object.list
+    })
   }
 }
 </script>>
