@@ -43,11 +43,11 @@ export default {
   name: 'AboutUs',
   data() {
     return {
-      typeIndex: '项目简介',
+      typeIndex: '集团布局',
       typeList: [
-        '项目简介', '运营理念', '投资项目', '资源优势', '媒体支持'
+        '集团布局', '集团架构', '集团理念', '办公环境', '集团业务模式'
       ],
-      typeSelect: '项目简介'
+      typeSelect: '集团布局'
     }
   },
   methods: {
@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .divBorder {
     border-radius: 0px;
     border-right: 1px solid #eeeeee;
@@ -84,4 +84,4 @@ export default {
   font-family:方正毡笔黑简体;
   color:#4B4B4B;
 }
-</style>>
+</style>

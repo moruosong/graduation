@@ -21,6 +21,7 @@ import Ability from '../views/ability/index.vue'
 import Joinus from '../views/joinus/index.vue'
 import Recruit from '../views/backstage/recruit/index.vue'
 import NewInfo from '../views/news/newInfo/index.vue'
+import SonCompany from '../views/soncompany/index.vue'
 
 Vue.use(VueRouter)
 
@@ -86,11 +87,11 @@ const routes = [
         path: '/joinus',
         name: 'Joinus',
         component: Joinus
+      },
+      {
+        path: '/soncompany',
+        component: SonCompany
       }
-      // {
-      //   path: '/login',
-      //   component: Login
-      // }
     ]
   },
   {

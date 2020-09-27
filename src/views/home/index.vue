@@ -1,29 +1,27 @@
 <template>
   <div>
     <el-row :gutter="10">
-      <el-col :span="10" :xs="24">
-        <el-carousel :interval="4000" type="card" height="400px">
-          <el-carousel-item v-for="(item, index) in rotation" :key="index">
+      <el-col :span="6" :xs="24">
+        <el-carousel :interval="4000" height="400px">
+          <el-carousel-item v-for="item in rotation" :key="item">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
         </el-carousel>
       </el-col>
-      <el-col :span="14" :xs="24">
+      <el-col :span="12" :xs="24">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane v-for="(item, index) in typeList" :key="index" :label="item" :name="index">
             <div v-if="newList.length > 0">
               <ul style="list-style: none">
-                <li v-for="(item, index) in newList" :key="index">
-                  <a @click="toNews(item.id)">
+                <li v-for="el in newList" :key="el.id">
+                  <a @click="toNews(el.id)">
                     <div style="text-align:left;margin-top: 10px;">
-                      <el-row>
-                        <el-col :span="16">
-                          <span class="newsTitle">{{ item.title }}</span>
-                        </el-col>
-                        <el-col :span="8">
-                          <span class="newsDate">{{ item.createTime }}</span>
-                        </el-col>
-                      </el-row>
+                      <div>
+                        <span class="newsTitle">{{ el.title }}</span>
+                      </div>
+                      <div>
+                        <span class="newsDate">{{ el.createTime }}</span>
+                      </div>
                     </div>
                   </a>
                 </li>
@@ -36,10 +34,27 @@
           </el-tab-pane>
         </el-tabs>
       </el-col>
+      <el-col :span="6">
+        <div>
+          <el-table
+            :data="companyList"
+            border
+            style="width: 100%"
+            row-class-name="select_row"
+            @header-click="handleHeaderClick"
+            @row-click="handelRowClick"
+          >
+            <el-table-column
+              prop="name"
+              label="关于我们"
+            />
+          </el-table>
+        </div>
+      </el-col>
     </el-row>
     <el-divider />
     <el-row style="margin-left: 100px;margin-right: 100px;">
-      <el-col v-for="(item, index) in pics" :key="index" :span="6" :xs="12">
+      <el-col v-for="item in pics" :key="item" :span="6" :xs="12">
         <el-image
           style="width: 100%; height: 200px"
           :src="item"
@@ -55,6 +70,14 @@ export default {
   name: 'Home',
   data() {
     return {
+      companyList: [
+        { name: '中央新影文化发展有限公司' },
+        { name: '唐玺集团有限公司' },
+        { name: '中稹华夏实业有限公司' },
+        { name: '广东天玑控股集团' },
+        { name: '国中城投集团有限公司' },
+        { name: '西南晟铁物流有限公司' }
+      ],
       typeList: {},
       newList: [],
       activeName: '1',
@@ -89,6 +112,13 @@ export default {
     })
   },
   methods: {
+    handelRowClick(row, column, event) {
+      console.log(row.name)
+      this.$router.push({ path: '/soncompany', query: { name: row.name }})
+    },
+    handleHeaderClick() {
+      this.$router.push('/aboutus')
+    },
     toNews(id) {
       this.$router.push({ path: '/shownews', query: { id: id }})
     },
@@ -106,10 +136,13 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+
+.select_row:hover{
+  cursor: pointer;
+}
 .newsTitle {
   text-align: left;
-  margin-left: 10px;
   line-height: 24px;
   font-family: 'Microsoft YaHei';
   font-size: 18px;
@@ -121,7 +154,7 @@ export default {
 .newsDate {
   text-align: right;
   padding: 0;
-  margin-left: 30px;
+  margin-top: 10px;
   display: inline-block;
   font-family: 'Microsoft YaHei';
   font-size: 14px;
@@ -137,9 +170,6 @@ export default {
 }
 img{
 	width: 100%;
-	transition: transform 1.6s;
-}
-img:hover{
-	transform: scale(2.0);
+	transition: transform 1s;
 }
 </style>

@@ -2,7 +2,7 @@
   <el-container class="all">
     <el-aside v-if="isCollapse" class="hidden-md-and-up" style="padding: 0 0 0 0">
       <el-menu :default-active="activeName" :router="true" style="width: 100%; height: 100%;" @select="gotoPage">
-        <el-menu-item index="/Home" route="/home">首页</el-menu-item>
+        <el-menu-item index="/home" route="/home">首页</el-menu-item>
         <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
         <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
         <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
@@ -17,7 +17,7 @@
         <el-row>
           <el-col :span="12">
             <el-menu :default-active="activeName" mode="horizontal" :router="true" @select="gotoPage">
-              <el-menu-item index="/Home" route="/home">首页</el-menu-item>
+              <el-menu-item index="/home" route="/home">首页</el-menu-item>
               <el-menu-item index="/aboutus" route="/aboutus">关于我们</el-menu-item>
               <el-menu-item index="/survey" route="/survey">集团概况</el-menu-item>
               <el-menu-item index="/business" route="/business">业务中心</el-menu-item>
@@ -74,7 +74,7 @@ export default {
   name: 'Index',
   data() {
     return {
-      activeName: '/Home',
+      activeName: '/home',
       isCollapse: false,
       logourl: require('../assets/img/newlogo.jpg'),
       rotation: [
@@ -84,6 +84,12 @@ export default {
       ],
       isTrue: true,
       pic: require('@/assets/img/recruit.jpg')
+    }
+  },
+  watch: {
+    '$route': function(to, from) {
+      console.log(to, from)
+      this.activeName = to.path
     }
   },
   mounted() {

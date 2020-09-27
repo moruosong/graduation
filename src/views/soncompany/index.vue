@@ -41,15 +41,20 @@
 
 <script>
 export default {
-  name: 'Survey',
+  name: 'SonCompany',
   data() {
     return {
       typeIndex: '集团概况',
       typeList: [
-        '集团概况', '产业生态圈', '产业发展', '产业思想', '投行体系'
+        '中央新影文化发展有限公司', '唐玺集团有限公司', '中稹华夏实业有限公司', '广东天玑控股集团', '国中城投集团有限公司', '西南晟铁物流有限公司'
       ],
       typeSelect: '集团概况'
     }
+  },
+  mounted() {
+    const name = this.$route.query.name
+    this.typeIndex = name
+    this.typeSelect = name
   },
   methods: {
     handleSelect(index, indexPath) {
