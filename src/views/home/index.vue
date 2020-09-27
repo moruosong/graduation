@@ -172,4 +172,7 @@ img{
 	width: 100%;
 	transition: transform 1s;
 }
+// img:hover{
+// 	transform: scale(1.2);
+// }
 </style>
