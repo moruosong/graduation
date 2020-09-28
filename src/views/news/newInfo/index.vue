@@ -7,17 +7,17 @@
       <span class="date">{{ news.createTime }}</span>
     </div>
     <el-divider /><br><br>
-    <div style="text-align: left;">
-      <span class="content" v-text="news.content" />
-    </div><br>
-    <div>
-      <el-image
-        v-for="(item, index) in news.picList"
-        :key="index"
-        style="width: 60%; height: 100%"
-        :src="item.path"
-        fit="cover"
-      />
+    <div v-for="(value, key, i) in news.mapList" :key="i" style="text-align: left; margin-left: 20px">
+      <span class="content" v-text="Object.keys(value)[0]" />
+      <div>
+        <el-image
+          v-if="Object.values(value)[0]"
+          :key="index"
+          style="width: 60%; height: 60%; margin-left: 50px"
+          :src=" Object.values(value)[0].path"
+          fit="cover"
+        />
+      </div>
     </div>
   </div>
 </template>

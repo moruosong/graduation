@@ -101,6 +101,7 @@ export default {
       url: '/news/getAllNewsType',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
+      console.log(res)
       this.typeList = res.data.object
     })
     this.$http({
