@@ -44,7 +44,7 @@ export default {
   methods: {
     mapReady({ BMap, map }) {
       // 选择一个经纬度作为中心点
-      this.point = new BMap.Point(104.07049, 30.548981)
+      this.point = new BMap.Point(104.070727, 30.549373)
       map.centerAndZoom(this.point, this.zoom)
     }
   }
