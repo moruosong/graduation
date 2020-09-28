@@ -12,7 +12,6 @@
       <div>
         <el-image
           v-if="Object.values(value)[0]"
-          :key="index"
           style="width: 60%; height: 60%; margin-left: 50px"
           :src=" Object.values(value)[0].path"
           fit="cover"
