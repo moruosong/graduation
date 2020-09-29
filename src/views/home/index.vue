@@ -54,13 +54,18 @@
     </el-row>
     <el-divider />
     <el-row style="margin-left: 100px;margin-right: 100px;">
-      <el-col v-for="item in pics" :key="item" :span="6" :xs="12">
+      <el-image
+        style="width: 100%; height: 250px"
+        :src="pic"
+        fit="cover"
+      />
+      <!-- <el-col v-for="item in pics" :key="item" :span="6" :xs="12">
         <el-image
           style="width: 100%; height: 200px"
           :src="item"
           fit="cover"
         />
-      </el-col>
+      </el-col> -->
     </el-row>
   </div>
 </template>
@@ -86,12 +91,13 @@ export default {
         require('@/assets/img/rotation2-2.jpg'),
         require('@/assets/img/rotation2-3.jpg')
       ],
-      pics: [
-        require('@/assets/img/bottom01.jpg'),
-        require('@/assets/img/bottom02.jpg'),
-        require('@/assets/img/bottom03.jpg'),
-        require('@/assets/img/bottom04.jpg')
-      ]
+      pic: require('@/assets/img/home.jpg')
+      // pics: [
+      //   require('@/assets/img/bottom04.jpg'),
+      //   require('@/assets/img/bottom02.jpg'),
+      //   require('@/assets/img/bottom01.jpg'),
+      //   require('@/assets/img/bottom03.jpg')
+      // ]
     }
   },
   mounted() {
@@ -145,7 +151,7 @@ export default {
   text-align: left;
   line-height: 24px;
   font-family: 'Microsoft YaHei';
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
   color: #404040;

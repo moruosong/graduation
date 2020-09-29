@@ -32,9 +32,9 @@
       </el-col>
       <el-col :span="18">
         <div v-show="newInfo">
-          <div v-if="newsList.length > 0">
+          <div v-if="pageNewList.length > 0">
             <ul style="list-style: none">
-              <li v-for="(item, index) in newsList" :key="index">
+              <li v-for="(item, index) in pageNewList" :key="index">
                 <div style="text-align:left;margin-top: 10px;">
                   <el-image
                     v-if="item.picList && item.picList.length > 0"
@@ -63,6 +63,14 @@
                 </div><br><br>
               </li>
             </ul>
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :page-size="pageSize"
+              :total="newsList.length"
+              :hide-on-single-page="true"
+              @current-change="pageChange"
+            />
           </div>
           <div v-else>
             <span>暂无数据</span>
@@ -84,10 +92,12 @@ export default {
   components: { NewInfo },
   data() {
     return {
+      pageSize: 6,
       newInfo: true,
       typeList: [],
       typeIndex: '0',
       newsList: [],
+      pageNewList: [],
       news: {}
     }
   },
@@ -101,7 +111,6 @@ export default {
       url: '/news/getAllNewsType',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      console.log(res)
       this.typeList = res.data.object
     })
     this.$http({
@@ -109,11 +118,16 @@ export default {
       url: '/news/getAllNews',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
+      console.log(res)
       this.page = res.data.object
       this.newsList = res.data.object.list
+      this.pageChange(1)
     })
   },
   methods: {
+    pageChange(page) {
+      this.pageNewList = this.newsList.slice(page * this.pageSize - this.pageSize, page * this.pageSize)
+    },
     handleNewInfo(id) {
       this.newInfo = false
       this.$http({
@@ -131,6 +145,7 @@ export default {
     handleSelect(index) {
       this.newInfo = true
       this.newsList = []
+      this.pageNewList = []
       if (index === '0') {
         this.$http({
           method: 'post',
@@ -139,6 +154,7 @@ export default {
         }).then(res => {
           this.page = res.data.object
           this.newsList = res.data.object.list
+          this.pageChange(1)
         })
       } else {
         this.$http({
@@ -148,6 +164,7 @@ export default {
           data: { type: index }
         }).then(res => {
           this.newsList = res.data.object
+          this.pageChange(1)
         })
       }
     }
@@ -182,7 +199,7 @@ export default {
   margin-left: 10px;
   line-height: 24px;
   font-family: 'Microsoft YaHei';
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: normal;
   color: #404040;

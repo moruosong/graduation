@@ -33,6 +33,13 @@
           <div style="margin: 0px 20px">
             <el-divider />
           </div>
+          <div>
+            <el-image
+              :src="imageList[typeSelect]"
+              style="width: 100%;height: 100%; margin-left: 20px"
+              fit="cover"
+            />
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -44,11 +51,17 @@ export default {
   name: 'Business',
   data() {
     return {
-      typeIndex: '业务1',
+      typeIndex: '文旅康养',
       typeList: [
-        '业务1', '业务2', '业务3', '业务4', '业务5'
+        '文旅康养', '影视文化', '地产开发', '项目并购', '项目投资'
       ],
-      typeSelect: '业务1'
+      typeSelect: '文旅康养',
+      imageList: {
+        '文旅康养': require('@/assets/business/cultural.jpg'),
+        '影视文化': require('@/assets/business/movies.jpg'),
+        '地产开发': require('@/assets/business/property.jpg'),
+        '项目并购': require('@/assets/business/project.jpg')
+      }
     }
   },
   methods: {

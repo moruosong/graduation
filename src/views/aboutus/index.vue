@@ -33,6 +33,13 @@
           <div style="margin: 0px 20px">
             <el-divider />
           </div>
+          <div>
+            <el-image
+              :src="imageList[typeSelect]"
+              style="width: 100%;height: 100%; margin-left: 20px"
+              fit="cover"
+            />
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -45,14 +52,20 @@ export default {
     return {
       typeIndex: '集团布局',
       typeList: [
-        '集团布局', '集团架构', '集团理念', '办公环境', '集团业务模式'
+        '集团布局', '集团架构', '赋能体系', '集团理念及办公环境', '集团业务模式'
       ],
+      imageList: {
+        '集团布局': require('@/assets/aboutus/layout.jpg'),
+        '集团架构': require('@/assets/aboutus/framework.jpg'),
+        '集团理念及办公环境': require('@/assets/aboutus/concept.jpg'),
+        '集团业务模式': require('@/assets/aboutus/businessModel.jpg')
+      },
       typeSelect: '集团布局'
     }
   },
   methods: {
     handleSelect(index, indexPath) {
-      console.log(index, indexPath)
+      console.log(this.imageList['集团布局'])
       this.typeSelect = index
     }
   }

@@ -33,6 +33,13 @@
           <div style="margin: 0px 20px">
             <el-divider />
           </div>
+          <div>
+            <el-image
+              :src="imageList[typeSelect]"
+              style="width: 100%;height: 100%; margin-left: 20px"
+              fit="cover"
+            />
+          </div>
         </div>
       </el-col>
     </el-row>
@@ -48,6 +55,13 @@ export default {
       typeList: [
         '集团概况', '产业生态圈', '产业发展', '产业思想', '投行体系'
       ],
+      imageList: {
+        '集团概况': require('@/assets/group/survey.jpg'),
+        '产业生态圈': require('@/assets/group/ecosphere.jpg'),
+        '产业发展': require('@/assets/group/development.jpg'),
+        '产业思想': require('@/assets/group/thought.jpg'),
+        '投行体系': require('@/assets/group/investmentbanks.jpg')
+      },
       typeSelect: '集团概况'
     }
   },

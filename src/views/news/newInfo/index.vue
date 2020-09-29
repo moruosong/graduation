@@ -7,12 +7,14 @@
       <span class="date">{{ news.createTime }}</span>
     </div>
     <el-divider /><br><br>
-    <div v-for="(value, key, i) in news.mapList" :key="i" style="text-align: left; margin-left: 20px">
-      <span class="content" v-text="Object.keys(value)[0]" />
-      <div>
+    <div v-for="(value, key, i) in news.mapList" :key="i" style="text-align: left; margin-left: 20px;">
+      <div style="width: 70%;margin: 0 auto;">
+        <span class="content" v-text="Object.keys(value)[0]" />
+      </div>
+      <div style="text-align: center">
         <el-image
           v-if="Object.values(value)[0]"
-          style="width: 60%; height: 60%; margin-left: 50px"
+          style="width: 60%; height: 60%;"
           :src=" Object.values(value)[0].path"
           fit="cover"
         />
@@ -45,11 +47,11 @@ export default {
   white-space: pre-wrap;
   padding: 0;
   margin: 0;
-  width: 100%;
+  width: 60%;
   height: auto;
   font-family: 'Microsoft YaHei';
   color: #404040;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   font-style: normal;
   text-decoration: none;

@@ -1,19 +1,47 @@
 <template>
-  <div>
+  <div style="min-height:400px;width:1200px;height:635px;position:relative;margin: 0 auto; ">
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-image
-          style="width: 100%; height: 100%"
-          :src="pic1"
-          fit="cover"
-        />
+        <div style="height: 544px; width: 585px; left: 615px; top: 64px;z-index:17;background-color: rgb(40, 115, 208);">
+          <el-row>
+            <el-col :span="12">
+              <span style="line-height: 2;font-size: 30px;color: #eeeeee;text-align: center;">敬业心</span>
+            </el-col>
+            <el-col :span="12">
+              <el-image
+                style="width: 100%; height: 290px"
+                :src="topleft"
+                :fit="fit"
+              />
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12">
+              <el-image
+                style="width: 100%; height: 251px"
+                :src="lowerleft"
+                :fit="fit"
+              />
+            </el-col>
+            <el-col :span="12">
+              <span style="line-height: 2;font-size: 30px;color: #eeeeee;text-align: center;">变革心</span>
+            </el-col>
+          </el-row>
+        </div>
       </el-col>
       <el-col :span="12">
-        <el-image
-          style="width: 100%; height: 100%"
-          :src="pic2"
-          fit="cover"
-        />
+        <div style="height: 544px; width: 585px; left: 615px; top: 64px;z-index:17;background-color: rgb(40, 115, 208);">
+          <el-image
+            style="width: 30%; height: 544px"
+            :src="center"
+            :fit="fit"
+          />
+          <el-image
+            style="width: 70%; height: 544px"
+            :src="right"
+            :fit="fit"
+          />
+        </div>
       </el-col>
     </el-row><br>
     <router-link v-show="isShow" to="/joinus" @click="handleClick">加入我们</router-link>
@@ -25,9 +53,12 @@ export default {
   name: 'Ability',
   data() {
     return {
+      fit: 'cover',
       isShow: true,
-      pic1: require('@/assets/img/1600089212(1).jpg'),
-      pic2: require('@/assets/img/1600089247(1).jpg')
+      center: require('@/assets/ability/center.jpg'),
+      right: require('@/assets/ability/right.jpg'),
+      topleft: require('@/assets/ability/topleft.jpg'),
+      lowerleft: require('@/assets/ability/lowerleft.jpg')
     }
   },
   methods: {
