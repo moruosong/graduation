@@ -51,7 +51,7 @@ export default {
   height: auto;
   font-family: 'Microsoft YaHei';
   color: #404040;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   font-style: normal;
   text-decoration: none;
