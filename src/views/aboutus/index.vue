@@ -59,14 +59,14 @@ export default {
     return {
       typeIndex: '集团布局',
       typeList: [
-        '集团布局', '集团架构', '赋能体系', '集团理念及办公环境', '集团业务模式'
+        '集团布局', '集团架构', '集团理念及办公环境', '集团业务模式'
       ],
       imageList: {
         '集团布局': require('@/assets/aboutus/layout.jpg'),
         '集团架构': require('@/assets/aboutus/framework.jpg'),
         '集团理念及办公环境': require('@/assets/aboutus/concept.jpg'),
-        '集团业务模式': require('@/assets/aboutus/businessModel.jpg'),
-        '赋能体系': require('@/assets/aboutus/fntx.jpg')
+        '集团业务模式': require('@/assets/aboutus/businessModel.jpg')
+        // '赋能体系': require('@/assets/aboutus/fntx.jpg')
       },
       typeSelect: '集团布局'
     }

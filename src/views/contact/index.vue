@@ -16,7 +16,7 @@
           <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
         </div>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="10">
         <div style="text-align: right">
           <baidu-map
             id="allmap"
@@ -28,10 +28,10 @@
           </baidu-map>
         </div>
       </el-col>
-      <el-col :span="10">
+      <el-col :span="8">
         <div>
           <el-image
-            style="width: 50%; height: 50%;"
+            style="width: 60%; height: 100%;"
             :src="erweima"
             fit="cover"
           />
@@ -64,7 +64,7 @@ export default {
 /* 设定地图的大小 */
 #allmap{
   height: 300px;
-  width: 600px;
+  width: auto;
   margin: 0 auto;
 }
 </style>>

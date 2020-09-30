@@ -2,7 +2,7 @@
   <div>
     <el-row :gutter="10">
       <el-col :span="6" :xs="24">
-        <el-carousel :interval="4000" height="481px">
+        <el-carousel :interval="4000" height="380px">
           <el-carousel-item v-for="item in rotation" :key="item">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
@@ -42,6 +42,7 @@
             style="width: 100%"
             row-class-name="select_row"
             @header-click="handleHeaderClick"
+            @row-click="handelRowClick"
           >
             <!-- @row-click="handelRowClick" -->
             <el-table-column
@@ -76,9 +77,6 @@ export default {
   data() {
     return {
       companyList: [
-        { name: '中国.卡塔尔商业中心' },
-        { name: '尔目文旅集团' },
-        { name: '信业长青资管' },
         { name: '四川中稹星耀科技集团有限公司' },
         { name: '四川中稹普优实业有限公司' },
         { name: '四川中融融创实业有限公司' },
@@ -90,17 +88,11 @@ export default {
       newList: [],
       activeName: '1',
       rotation: [
-        require('@/assets/img/rotation2-1.jpg'),
-        require('@/assets/img/rotation2-2.jpg'),
-        require('@/assets/img/rotation2-3.jpg')
+        require('@/assets/img/44.jpg'),
+        require('@/assets/img/47.jpg'),
+        require('@/assets/img/48.jpg')
       ],
       pic: require('@/assets/img/home.jpg')
-      // pics: [
-      //   require('@/assets/img/bottom04.jpg'),
-      //   require('@/assets/img/bottom02.jpg'),
-      //   require('@/assets/img/bottom01.jpg'),
-      //   require('@/assets/img/bottom03.jpg')
-      // ]
     }
   },
   mounted() {
@@ -117,7 +109,7 @@ export default {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: { type: 1 }
     }).then(res => {
-      this.newList = res.data.object.slice(0, 6)
+      this.newList = res.data.object.slice(0, 5)
     })
   },
   methods: {

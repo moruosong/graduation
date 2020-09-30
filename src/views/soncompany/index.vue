@@ -1,7 +1,7 @@
 <template>
   <div style="margin-left: 50px">
     <el-row>
-      <el-col :span="4">
+      <el-col :span="6">
         <div>
           <el-menu
             :default-active="typeIndex"
@@ -27,12 +27,17 @@
           <div><span style="font-size: 16px; line-height:30px">地址：四川省成都市高新区天府四街158号</span></div>
         </div>
       </el-col>
-      <el-col :span="18">
+      <el-col :span="16">
         <div>
-          <span style="font-size:30px">{{ typeSelect }}</span>
-          <div style="margin: 0px 20px">
+          <!--<span style="font-size:30px">{{ typeSelect }}</span>
+          <div style="margin: 0 auto">
             <el-divider />
-          </div>
+          </div>-->
+          <el-image
+            :src="imageMap[typeSelect]"
+            style="width: 80%;height: 100%; margin-left: 20px"
+            fit="fill"
+          />
         </div>
       </el-col>
     </el-row>
@@ -46,20 +51,37 @@ export default {
     return {
       typeIndex: '集团概况',
       typeList: [
-        '中央新影文化发展有限公司', '唐玺集团有限公司', '中稹华夏实业有限公司', '广东天玑控股集团', '国中城投集团有限公司', '西南晟铁物流有限公司'
+        '四川中稹星耀科技集团有限公司',
+        '四川中稹普优实业有限公司',
+        '四川中融融创实业有限公司',
+        '四川中稹滨海置业有限公司',
+        '四川中稹施华洛建筑工程有限公司',
+        '四川中稹怀星房地产营销策划有限公司'
       ],
+      imageMap: {
+        '四川中稹星耀科技集团有限公司': require('@/assets/company/xingyaokeji.jpg'),
+        '四川中稹普优实业有限公司': require('@/assets/company/puyou.jpg'),
+        '四川中融融创实业有限公司': require('@/assets/company/zhongrong.jpg'),
+        '四川中稹滨海置业有限公司': require('@/assets/company/binhaizhiye.jpg'),
+        '四川中稹施华洛建筑工程有限公司': require('@/assets/company/shihualuo.jpg'),
+        '四川中稹怀星房地产营销策划有限公司': require('@/assets/company/huaixing.jpg')
+      },
       typeSelect: '集团概况'
     }
   },
   mounted() {
-    const name = this.$route.query.name
-    this.typeIndex = name
-    this.typeSelect = name
+    this.$nextTick(() => {
+      setTimeout(() => {
+        const name = this.$route.query.name
+        this.typeIndex = name
+        this.typeSelect = name
+      }, 500)
+    })
   },
   methods: {
     handleSelect(index, indexPath) {
-      console.log(index, indexPath)
       this.typeSelect = index
+      // console.log(this.imageMap[this.typeSelect])
     }
   }
 }
