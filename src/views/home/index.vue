@@ -2,7 +2,7 @@
   <div>
     <el-row :gutter="10">
       <el-col :span="6" :xs="24">
-        <el-carousel :interval="4000" height="400px">
+        <el-carousel :interval="4000" height="481px">
           <el-carousel-item v-for="item in rotation" :key="item">
             <el-image :src="item" style="width: 100%; height: 100%" fit="scale-down" />
           </el-carousel-item>
@@ -42,8 +42,8 @@
             style="width: 100%"
             row-class-name="select_row"
             @header-click="handleHeaderClick"
-            @row-click="handelRowClick"
           >
+            <!-- @row-click="handelRowClick" -->
             <el-table-column
               prop="name"
               label="关于我们"
@@ -76,12 +76,15 @@ export default {
   data() {
     return {
       companyList: [
-        { name: '中央新影文化发展有限公司' },
-        { name: '唐玺集团有限公司' },
-        { name: '中稹华夏实业有限公司' },
-        { name: '广东天玑控股集团' },
-        { name: '国中城投集团有限公司' },
-        { name: '西南晟铁物流有限公司' }
+        { name: '中国.卡塔尔商业中心' },
+        { name: '尔目文旅集团' },
+        { name: '信业长青资管' },
+        { name: '四川中稹星耀科技集团有限公司' },
+        { name: '四川中稹普优实业有限公司' },
+        { name: '四川中融融创实业有限公司' },
+        { name: '四川中稹滨海置业有限公司' },
+        { name: '四川中稹施华洛建筑工程有限公司' },
+        { name: '四川中稹怀星房地产营销策划有限公司' }
       ],
       typeList: {},
       newList: [],
@@ -114,7 +117,7 @@ export default {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       data: { type: 1 }
     }).then(res => {
-      this.newList = res.data.object.slice(0, 5)
+      this.newList = res.data.object.slice(0, 6)
     })
   },
   methods: {

@@ -30,14 +30,21 @@
       <el-col :span="18">
         <div>
           <span style="font-size:30px">{{ typeSelect }}</span>
-          <div style="margin: 0px 20px">
+          <div style="margin: 0 auto; text-align: center">
             <el-divider />
           </div>
-          <div>
+          <div v-if="typeSelect === '赋能体系'">
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 100%;height: 100%; margin-left: 20px"
-              fit="cover"
+              style="width: 50%;height: 100%; margin-left: 20px"
+              fit="fill"
+            />
+          </div>
+          <div v-else>
+            <el-image
+              :src="imageList[typeSelect]"
+              style="width: 80%;height: 100%; margin-left: 20px"
+              fit="fill"
             />
           </div>
         </div>
@@ -58,7 +65,8 @@ export default {
         '集团布局': require('@/assets/aboutus/layout.jpg'),
         '集团架构': require('@/assets/aboutus/framework.jpg'),
         '集团理念及办公环境': require('@/assets/aboutus/concept.jpg'),
-        '集团业务模式': require('@/assets/aboutus/businessModel.jpg')
+        '集团业务模式': require('@/assets/aboutus/businessModel.jpg'),
+        '赋能体系': require('@/assets/aboutus/fntx.jpg')
       },
       typeSelect: '集团布局'
     }
