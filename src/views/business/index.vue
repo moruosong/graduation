@@ -17,7 +17,7 @@
           <div>
             <a href="#">
               <span style="font-size: 16px; line-height:30px">网址：</span>
-              <span style="font-size: 16px; line-height:30px">www.zhongzhenrc.com</span>
+              <span style="font-size: 16px; line-height:30px; word-break: break-all;">www.zhongzhenrc.com</span>
             </a>
           </div>
           <div><span style="color:#cc0000;font-size: 16px; line-height:30px">中稹融创实业集团有限公司</span></div>
@@ -33,12 +33,15 @@
           <div style="margin: 0px 20px">
             <el-divider />
           </div>
-          <div>
+          <div v-if="imageList[typeSelect]">
             <el-image
               :src="imageList[typeSelect]"
               style="width: 100%;height: 100%; margin-left: 20px"
               fit="cover"
             />
+          </div>
+          <div v-else>
+            <span>正在上传...</span>
           </div>
         </div>
       </el-col>

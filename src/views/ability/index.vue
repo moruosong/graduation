@@ -4,10 +4,14 @@
       <el-col :span="12">
         <div style="height: 544px; width: 585px; left: 615px; top: 64px;z-index:17;background-color: rgb(40, 115, 208);">
           <el-row>
-            <el-col :span="12">
-              <span style="line-height: 2;font-size: 30px;color: #eeeeee;text-align: center;">敬业心</span>
+            <el-col :span="10">
+              <el-image
+                style="width: 100%; height: 290px"
+                :src="topright"
+                :fit="fit"
+              />
             </el-col>
-            <el-col :span="12">
+            <el-col :span="14">
               <el-image
                 style="width: 100%; height: 290px"
                 :src="topleft"
@@ -16,15 +20,19 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-col :span="12">
+            <el-col :span="10">
               <el-image
                 style="width: 100%; height: 251px"
                 :src="lowerleft"
                 :fit="fit"
               />
             </el-col>
-            <el-col :span="12">
-              <span style="line-height: 2;font-size: 30px;color: #eeeeee;text-align: center;">变革心</span>
+            <el-col :span="14">
+              <el-image
+                style="width: 100%; height: 251px"
+                :src="lowerright"
+                :fit="fit"
+              />
             </el-col>
           </el-row>
         </div>
@@ -53,12 +61,14 @@ export default {
   name: 'Ability',
   data() {
     return {
-      fit: 'cover',
+      fit: 'fill',
       isShow: true,
       center: require('@/assets/ability/center.jpg'),
       right: require('@/assets/ability/right.jpg'),
       topleft: require('@/assets/ability/topleft.jpg'),
-      lowerleft: require('@/assets/ability/lowerleft.jpg')
+      topright: require('@/assets/ability/topright.jpg'),
+      lowerleft: require('@/assets/ability/lowerleft.jpg'),
+      lowerright: require('@/assets/ability/lowerright.jpg')
     }
   },
   methods: {

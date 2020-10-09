@@ -17,7 +17,7 @@
           <div>
             <a href="#">
               <span style="font-size: 16px; line-height:30px">网址：</span>
-              <span style="font-size: 16px; line-height:30px">www.zhongzhenrc.com</span>
+              <span style="font-size: 16px; line-height:30px; word-break: break-all;">www.zhongzhenrc.com</span>
             </a>
           </div>
           <div><span style="color:#cc0000;font-size: 16px; line-height:30px">中稹融创实业集团有限公司</span></div>

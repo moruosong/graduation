@@ -7,9 +7,10 @@
       <span class="date">{{ news.createTime }}</span>
     </div>
     <el-divider /><br><br>
-    <div v-for="(value, key, i) in news.mapList" :key="i" style="text-align: left; margin-left: 20px;">
-      <div style="width: 70%;margin: 0 auto;">
-        <span class="content" v-text="Object.keys(value)[0]" />
+    <div v-for="(value, key, i) in news.mapList" :key="i">
+      <div style="width: 70%;margin: 0 auto;text-align: justify;text-justify: distribute-all-lines;word-break: break-all;">
+        <!--<span class="content" v-text="Object.keys(value)[0]" />-->
+        <span class="content">{{ Object.keys(value)[0] }}<span style="display:inline-block;width: 100%;" /></span>
       </div>
       <div style="text-align: center">
         <el-image
@@ -44,6 +45,9 @@ export default {
 
 <style lang="less" scoped>
 .content{
+  text-align: justify;
+  text-justify: distribute-all-lines;
+  word-break: break-all;
   white-space: pre-wrap;
   padding: 0;
   margin: 0;
@@ -57,7 +61,6 @@ export default {
   text-decoration: none;
   line-height: 24px;
   word-wrap: break-word;
-  word-break: normal;
 }
 .title{
   padding: 0;

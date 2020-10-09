@@ -55,7 +55,7 @@ export default {
   name: 'BackStage',
   data() {
     return {
-      logourl: require('@/assets/img/logo.png')
+      logourl: require('@/assets/img/newlogo.jpg')
     }
   },
   methods: {
