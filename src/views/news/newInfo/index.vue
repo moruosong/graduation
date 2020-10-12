@@ -8,9 +8,12 @@
     </div>
     <el-divider /><br><br>
     <div v-for="(value, key, i) in news.mapList" :key="i">
-      <div style="width: 70%;margin: 0 auto;text-align: justify;text-justify: distribute-all-lines;word-break: break-all;">
+      <div style="width: 70%;margin: 0 auto;text-align: justify;">
         <!--<span class="content" v-text="Object.keys(value)[0]" />-->
-        <span class="content">{{ Object.keys(value)[0] }}<span style="display:inline-block;width: 100%;" /></span>
+        <span class="content">
+          {{ Object.keys(value)[0] }}
+          <span class="content-span" />
+        </span>
       </div>
       <div style="text-align: center">
         <el-image
@@ -61,6 +64,10 @@ export default {
   text-decoration: none;
   line-height: 24px;
   word-wrap: break-word;
+  .content-span{
+    display: inline-block;
+    width: 100%;
+  }
 }
 .title{
   padding: 0;

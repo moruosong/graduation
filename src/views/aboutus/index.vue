@@ -36,14 +36,14 @@
           <div v-if="typeSelect === '赋能体系'">
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 50%;height: 100%; margin-left: 20px"
+              style="width: 50%;height: 100%;"
               fit="fill"
             />
           </div>
           <div v-else>
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 80%;height: 100%; margin-left: 20px"
+              style="width: 80%;height: 400px;"
               fit="fill"
             />
           </div>
@@ -59,14 +59,14 @@ export default {
     return {
       typeIndex: '集团布局',
       typeList: [
-        '集团布局', '集团架构', '集团理念及办公环境', '集团业务模式'
+        '集团布局', '集团架构', '集团理念', '办公环境', '集团业务模式'
       ],
       imageList: {
         '集团布局': require('@/assets/aboutus/layout.jpg'),
         '集团架构': require('@/assets/aboutus/framework.jpg'),
-        '集团理念及办公环境': require('@/assets/aboutus/concept.jpg'),
-        '集团业务模式': require('@/assets/aboutus/businessModel.jpg')
-        // '赋能体系': require('@/assets/aboutus/fntx.jpg')
+        '集团理念': require('@/assets/aboutus/理念.jpg'),
+        '集团业务模式': require('@/assets/aboutus/businessModel.jpg'),
+        '办公环境': require('@/assets/aboutus/办公环境.jpg')
       },
       typeSelect: '集团布局'
     }

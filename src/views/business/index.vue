@@ -36,7 +36,7 @@
           <div v-if="imageList[typeSelect]">
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 100%;height: 100%; margin-left: 20px"
+              style="width: 60%;height: 60%;"
               fit="cover"
             />
           </div>
@@ -56,14 +56,18 @@ export default {
     return {
       typeIndex: '文旅康养',
       typeList: [
-        '文旅康养', '影视文化', '地产开发', '项目并购', '项目投资'
+        '文旅康养', '影视文化', '地产开发', '项目并购', '大农业', '体育产业', '科技创新', '教育产业', '项目投资'
       ],
       typeSelect: '文旅康养',
       imageList: {
-        '文旅康养': require('@/assets/business/cultural.jpg'),
-        '影视文化': require('@/assets/business/movies.jpg'),
-        '地产开发': require('@/assets/business/property.jpg'),
-        '项目并购': require('@/assets/business/project.jpg')
+        '文旅康养': require('@/assets/business/文旅康养.jpg'),
+        '影视文化': require('@/assets/business/影视文化.jpg'),
+        '地产开发': require('@/assets/business/地产开发.jpg'),
+        '项目并购': require('@/assets/business/项目并购.jpg'),
+        '科技创新': require('@/assets/business/科技创新.jpg'),
+        '大农业': require('@/assets/business/大农业.jpg'),
+        '教育产业': require('@/assets/business/教育产业.jpg'),
+        '体育产业': require('@/assets/business/体育产业.jpg')
       }
     }
   },

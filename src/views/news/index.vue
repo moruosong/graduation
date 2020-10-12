@@ -35,32 +35,38 @@
           <div v-if="pageNewList.length > 0">
             <ul style="list-style: none">
               <li v-for="(item, index) in pageNewList" :key="index">
-                <div style="text-align:left;margin-top: 10px;">
-                  <el-image
-                    v-if="item.picList && item.picList.length > 0"
-                    style="width: 120px; height: 88px; float: left; margin-right: 10px"
-                    :src="item.picList[0].path"
-                    fit="cover"
-                  >
-                    <div slot="error" class="image-slot">
-                      <span>暂无图片</span>
+                <div class="newDiv">
+                  <div>
+                    <el-image
+                      v-if="item.picList && item.picList.length > 0"
+                      style="width: 120px; height: 88px; float: left; margin-right: 10px"
+                      :src="item.picList[0].path"
+                      fit="cover"
+                    >
+                      <div slot="error" class="image-slot">
+                        <span>暂无图片</span>
+                      </div>
+                    </el-image>
+                    <el-image
+                      v-else
+                      style="width: 120px; height: 88px; float: left; margin-right: 10px"
+                      src="#"
+                      fit="cover"
+                    >
+                      <div slot="error" class="imageError">
+                        <span>暂无图片</span>
+                      </div>
+                    </el-image>
+                    <el-link :underline="false" @click="handleNewInfo(item.id)">
+                      <div class="newsTitle">{{ item.title }}</div>
+                      <div class="newsDate">{{ item.createTime }}</div>
+                    </el-link>
+                    <div class="view-num">
+                      <span class="el-icon-view" />
+                      <span style="padding-left: 5px">{{ item.viewNum }}</span>
                     </div>
-                  </el-image>
-                  <el-image
-                    v-else
-                    style="width: 120px; height: 88px; float: left; margin-right: 10px"
-                    src="#"
-                    fit="cover"
-                  >
-                    <div slot="error" class="imageError">
-                      <span>暂无图片</span>
-                    </div>
-                  </el-image>
-                  <el-link :underline="false" @click="handleNewInfo(item.id)">
-                    <span class="newsTitle">{{ item.title }}</span> <br>
-                    <span class="newsDate">{{ item.createTime }}</span>
-                  </el-link>
-                </div><br><br>
+                  </div>
+                </div>
               </li>
             </ul>
             <el-pagination
@@ -173,6 +179,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.newDiv{
+  position: relative;
+  text-align:left;
+  margin-top: 30px;
+  .view-num{
+    position: relative;
+    float: right;
+    top: 20px;
+    font-size: 12px;
+    color: #BBB;
+  }
+}
 .divBorder {
     border-radius: 0px;
     border-right: 1px solid #eeeeee;
