@@ -36,7 +36,7 @@
           <div v-if="imageList[typeSelect]">
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 60%;height: 60%;"
+              style="height: 40%;"
               fit="cover"
             />
           </div>
