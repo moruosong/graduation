@@ -43,7 +43,7 @@
           <div v-else>
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 80%;height: 445px;"
+              style="width: 90%; height: 500px"
               fit="fill"
             />
           </div>
