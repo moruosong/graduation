@@ -43,7 +43,7 @@
           <div v-else>
             <el-image
               :src="imageList[typeSelect]"
-              style="width: 80%;height: 100%;"
+              style="width: 80%;height: 445px;"
               fit="fill"
             />
           </div>
@@ -64,9 +64,9 @@ export default {
       imageList: {
         '集团布局': require('@/assets/aboutus/layout.jpg'),
         '集团架构': require('@/assets/aboutus/framework.jpg'),
-        '集团理念': require('@/assets/aboutus/理念.jpg'),
-        '集团业务模式': require('@/assets/aboutus/businessModel.jpg'),
-        '办公环境': require('@/assets/aboutus/办公环境.jpg')
+        '集团理念': require('@/assets/aboutus/集团理念1100x500.jpg'),
+        '集团业务模式': require('@/assets/aboutus/集团业务模式1100x575.jpg'),
+        '办公环境': require('@/assets/aboutus/办公环境1100x500.jpg')
       },
       typeSelect: '集团布局'
     }

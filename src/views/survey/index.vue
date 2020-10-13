@@ -56,11 +56,11 @@ export default {
         '集团概况', '产业生态圈', '产业发展', '产业思想', '投行体系'
       ],
       imageList: {
-        '集团概况': require('@/assets/group/survey.jpg'),
-        '产业生态圈': require('@/assets/group/ecosphere.jpg'),
+        '集团概况': require('@/assets/group/集团概况1100X623.jpg'),
+        '产业生态圈': require('@/assets/group/产业生态圈1100x623.jpg'),
         '产业发展': require('@/assets/group/development.jpg'),
-        '产业思想': require('@/assets/group/thought.jpg'),
-        '投行体系': require('@/assets/group/investmentbanks.jpg')
+        '产业思想': require('@/assets/group/产业思想1100x623.jpg'),
+        '投行体系': require('@/assets/group/投行体系图1100x623.jpg')
       },
       typeSelect: '集团概况'
     }

@@ -1,8 +1,8 @@
 <template>
-  <div style="min-height:400px;width:1200px;height:635px;position:relative;margin: 0 auto; ">
+  <div>
     <el-row :gutter="20">
       <el-col :span="12">
-        <div style="height: 544px; width: 585px; left: 615px; top: 64px;z-index:17;background-color: rgb(40, 115, 208);">
+        <div>
           <el-row>
             <el-col :span="10">
               <el-image
@@ -38,7 +38,7 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div style="height: 544px; width: 585px; left: 615px; top: 64px;z-index:17;background-color: rgb(40, 115, 208);">
+        <div>
           <el-image
             style="width: 30%; height: 544px"
             :src="center"
@@ -64,11 +64,11 @@ export default {
       fit: 'fill',
       isShow: true,
       center: require('@/assets/ability/center.jpg'),
-      right: require('@/assets/ability/right.jpg'),
+      right: require('@/assets/ability/最右侧图片.jpg'),
       topleft: require('@/assets/ability/topleft.jpg'),
-      topright: require('@/assets/ability/topright.jpg'),
+      topright: require('@/assets/ability/左上.jpg'),
       lowerleft: require('@/assets/ability/lowerleft.jpg'),
-      lowerright: require('@/assets/ability/lowerright.jpg')
+      lowerright: require('@/assets/ability/左下.jpg')
     }
   },
   methods: {
