@@ -54,19 +54,19 @@
       </el-col>
     </el-row>
     <el-divider />
-    <el-row style="margin-left: 100px;margin-right: 100px;">
-      <el-image
+    <el-row>
+      <!-- <el-image
         style="width: 100%; height: 250px"
         :src="pic"
         fit="cover"
-      />
-      <!-- <el-col v-for="item in pics" :key="item" :span="6" :xs="12">
+      /> -->
+      <el-col v-for="item in pics" :key="item" :span="6" :xs="12">
         <el-image
           style="width: 100%; height: 200px"
           :src="item"
           fit="cover"
         />
-      </el-col> -->
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -92,7 +92,12 @@ export default {
         require('@/assets/img/47.jpg'),
         require('@/assets/img/48.jpg')
       ],
-      pic: require('@/assets/img/home.jpg')
+      pics: [
+        require('@/assets/home/01.jpg'),
+        require('@/assets/home/02.jpg'),
+        require('@/assets/home/03.jpg'),
+        require('@/assets/home/04.jpg')
+      ]
     }
   },
   mounted() {

@@ -56,7 +56,7 @@
           :src="pic"
           fit="fill"
         />
-        <router-view />
+        <router-view style="width: 80%; margin: 0 auto" />
         <div class="foot">
           <span style="font-family: Tahoma;color: #f3f3f3;font-size: 14px;line-height: 47px;">版权所有: 中稹融创 地址: 四川省成都市高新区天府四街158号</span>
         </div>
