@@ -77,11 +77,7 @@ export default {
       activeName: '/home',
       isCollapse: false,
       logourl: require('../assets/img/newlogo.jpg'),
-      rotation: [
-        require('../assets/img/rotation1.jpg'),
-        require('../assets/img/rotation2.jpg'),
-        require('../assets/img/rotation3.jpg')
-      ],
+      rotation: [],
       isTrue: true,
       pic: require('@/assets/img/招聘.jpg')
     }

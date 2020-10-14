@@ -6,14 +6,14 @@
           <el-row>
             <el-col :span="10">
               <el-image
-                style="width: 100%; height: 290px"
+                style="width: 100%; height: 318px"
                 :src="topright"
                 :fit="fit"
               />
             </el-col>
             <el-col :span="14">
               <el-image
-                style="width: 100%; height: 290px"
+                style="width: 100%; height: 318px"
                 :src="topleft"
                 :fit="fit"
               />
@@ -22,14 +22,14 @@
           <el-row>
             <el-col :span="10">
               <el-image
-                style="width: 100%; height: 251px"
+                style="width: 100%; height: 280px"
                 :src="lowerleft"
                 :fit="fit"
               />
             </el-col>
             <el-col :span="14">
               <el-image
-                style="width: 100%; height: 251px"
+                style="width: 100%; height: 280px"
                 :src="lowerright"
                 :fit="fit"
               />
@@ -40,12 +40,12 @@
       <el-col :span="12">
         <div>
           <el-image
-            style="width: 30%; height: 544px"
+            style="width: 30%; height: 600px"
             :src="center"
             :fit="fit"
           />
           <el-image
-            style="width: 70%; height: 544px"
+            style="width: 70%; height: 600px"
             :src="right"
             :fit="fit"
           />
