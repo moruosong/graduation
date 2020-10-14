@@ -83,7 +83,7 @@ export default {
         require('../assets/img/rotation3.jpg')
       ],
       isTrue: true,
-      pic: require('@/assets/img/recruit.jpg')
+      pic: require('@/assets/img/招聘.jpg')
     }
   },
   watch: {

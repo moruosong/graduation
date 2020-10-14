@@ -63,9 +63,9 @@ export default {
       ],
       imageList: {
         '集团布局': require('@/assets/aboutus/layout.jpg'),
-        '集团架构': require('@/assets/aboutus/framework.jpg'),
+        '集团架构': require('@/assets/aboutus/组织架构1100x500.jpg'),
         '集团理念': require('@/assets/aboutus/集团理念1100x500.jpg'),
-        '集团业务模式': require('@/assets/aboutus/集团业务模式1100x575.jpg'),
+        '集团业务模式': require('@/assets/aboutus/业务1100x500.jpg'),
         '办公环境': require('@/assets/aboutus/办公环境1100x500.jpg')
       },
       typeSelect: '集团布局'

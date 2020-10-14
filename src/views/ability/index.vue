@@ -64,11 +64,11 @@ export default {
       fit: 'fill',
       isShow: true,
       center: require('@/assets/ability/center.jpg'),
-      right: require('@/assets/ability/最右侧图片.jpg'),
-      topleft: require('@/assets/ability/topleft.jpg'),
-      topright: require('@/assets/ability/左上.jpg'),
+      right: require('@/assets/ability/444.jpg'),
+      topleft: require('@/assets/ability/333.jpg'),
+      topright: require('@/assets/ability/111.jpg'),
       lowerleft: require('@/assets/ability/lowerleft.jpg'),
-      lowerright: require('@/assets/ability/左下.jpg')
+      lowerright: require('@/assets/ability/555.jpg')
     }
   },
   methods: {
