@@ -67,7 +67,8 @@ export default {
         '科技创新': require('@/assets/business/22.jpg'),
         '大农业': require('@/assets/business/11.jpg'),
         '教育产业': require('@/assets/business/33.jpg'),
-        '体育产业': require('@/assets/business/44.jpg')
+        '体育产业': require('@/assets/business/44.jpg'),
+        '项目投资': require('@/assets/business/99.jpg')
       }
     }
   },

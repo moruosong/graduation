@@ -28,8 +28,7 @@ export default {
   name: 'Joinus',
   data() {
     return {
-      positionList: [
-      ]
+      positionList: []
     }
   },
   mounted() {
