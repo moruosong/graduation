@@ -34,15 +34,20 @@
           <div style="margin: 0px 20px">
             <el-divider />
           </div>
-          <div v-if="imageList[typeSelect]">
-            <el-image
-              :src="imageList[typeSelect]"
-              style="width:90%; height: 90%"
-              fit="cover"
-            />
+          <div v-if="!isInvest">
+            <div v-if="imageList[typeSelect]">
+              <el-image
+                :src="imageList[typeSelect]"
+                style="width:90%; height: 90%"
+                fit="cover"
+              />
+            </div>
+            <div v-else>
+              <span>正在上传...</span>
+            </div>
           </div>
           <div v-else>
-            <span>正在上传...</span>
+            <invest />
           </div>
         </div>
       </el-col>
@@ -51,10 +56,15 @@
 </template>
 
 <script>
+
+import invest from './components/invest'
+
 export default {
   name: 'Business',
+  components: { invest },
   data() {
     return {
+      isInvest: false,
       typeIndex: '文旅康养',
       typeList: [
         '文旅康养', '影视文化', '地产开发', '项目并购', '大农业', '体育产业', '科技创新', '教育产业', '项目投资'
@@ -77,6 +87,11 @@ export default {
     handleSelect(index, indexPath) {
       console.log(index, indexPath)
       this.typeSelect = index
+      if (index === '项目投资') {
+        this.isInvest = true
+      } else {
+        this.isInvest = false
+      }
     }
   }
 }
