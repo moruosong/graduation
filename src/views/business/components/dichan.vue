@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="isShow">
-      <el-row :gutter="10" style="margin: 10px 0">
+      <el-row style="margin: 10px 0">
         <el-col :span="12">
           <el-card shadow="hover">
             <el-image
