@@ -1,26 +1,22 @@
 <template>
   <div>
     <div v-if="isShow">
-      <el-row style="margin: 10px 0">
+      <el-row style="margin: 10px 0;">
         <el-col :span="12">
-          <el-card shadow="hover">
-            <el-image
-              :src="project1"
-              style="width:100%; height: 100%"
-              fit="cover"
-              @click="handleShow(require('@/assets/business/project1-1.jpg'))"
-            />
-          </el-card>
+          <el-image
+            :src="project1"
+            style="width:100%; height: 255px"
+            fit="fill"
+            @click="handleShow(require('@/assets/business/project1-1.jpg'))"
+          />
         </el-col>
         <el-col :span="12">
-          <el-card shadow="hover">
-            <el-image
-              :src="project2"
-              style="width:100%; height: 100%"
-              fit="cover"
-              @click="handleShow(require('@/assets/business/project2-1.jpg'))"
-            />
-          </el-card>
+          <el-image
+            :src="project2"
+            style="width:100%; height: 255px"
+            fit="fill"
+            @click="handleShow(require('@/assets/business/project2-1.jpg'))"
+          />
         </el-col>
       </el-row>
     </div>

@@ -53,9 +53,9 @@ export default {
 </script>
 
 <style lang="scss">
-.type-item {
-  .el-card__body:hover {
-    background-color: red;
-  }
-}
+//.type-item {
+//  .el-card__body:hover {
+//    background-color: red;
+//  }
+//}
 </style>>
