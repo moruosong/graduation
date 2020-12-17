@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="type-item">
     <div v-if="isShow" style="margin: 0 10px; margin-bottom: 20px">
       <el-row>
         <el-col :span="8">
@@ -51,3 +51,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.type-item {
+  .el-card__body:hover {
+    background-color: red;
+  }
+}
+</style>>
