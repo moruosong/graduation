@@ -46,6 +46,8 @@ export default {
     },
     goBack() {
       this.isShow = true
+      this.$refs.dichan.project1 = require('@/assets/business/project1.jpg')
+      this.$refs.dichan.project2 = require('@/assets/business/project2.jpg')
       this.$refs.dichan.isShow = true
     }
   }
