@@ -3,22 +3,22 @@
     <div v-if="isShow">
       <el-row :gutter="5" style="margin: 10px 0;">
         <el-col :span="12">
-          <div @mouseover="handleMouseOver('1')" @mouseleave="handleMouseLeave('1')">
-            <el-image
-              :src="project1"
-              style="width:100%; height: 100%"
-              fit="fill"
-              @click="handleShow(require('@/assets/business/project1-1.jpg'))"
-            />
-          </div>
-        </el-col>
-        <el-col :span="12">
           <div @mouseover="handleMouseOver('2')" @mouseleave="handleMouseLeave('2')">
             <el-image
               :src="project2"
               style="width:100%; height: 100%"
               fit="fill"
               @click="handleShow(require('@/assets/business/project2-1.jpg'))"
+            />
+          </div>
+        </el-col>
+        <el-col :span="12">
+          <div @mouseover="handleMouseOver('1')" @mouseleave="handleMouseLeave('1')">
+            <el-image
+              :src="project1"
+              style="width:100%; height: 100%"
+              fit="fill"
+              @click="handleShow(require('@/assets/business/project1-1.jpg'))"
             />
           </div>
         </el-col>
