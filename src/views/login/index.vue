@@ -2,11 +2,14 @@
   <div class="login_container" :style="backgroundimg">
     <div class="login_box">
       <!-- 头像 -->
-      <div class="avator_box">
+      <!-- <div class="avator_box">
         <img :src="require('@/assets/img/logo2.jpg')">
-      </div>
+      </div> -->
       <!-- 登陆表单 -->
       <el-form ref="ruleForm" label-width="0px" class="login_form" :model="ruleForm" :rules="rules">
+        <el-form-item>
+          <span style="font-size: 20px">登录社团管理系统</span>
+        </el-form-item>
         <!-- 用户名 -->
         <el-form-item label prop="username">
           <el-input v-model="ruleForm.username" prefix-icon="el-icon-user-solid" />
