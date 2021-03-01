@@ -1,10 +1,10 @@
 <template>
   <el-card style="height: 100%; width: 100%">
     <div slot="header" class="card-hrader">
-      <span>新闻管理</span>
-      <el-button type="primary" size="small" @click="dlg = true">添加新闻</el-button>
+      <span>活动管理</span>
+      <el-button type="primary" size="small" @click="dlg = true">添加活动</el-button>
     </div>
-    <el-table :data="newsList" style="width: 100%">
+    <el-table :data="activList" style="width: 100%">
       <el-table-column
         :show-overflow-tooltip="true"
         prop="title"
@@ -17,7 +17,7 @@
         width="200"
       >
         <template scope="scope">
-          <span>{{ typeList[scope.row.type] }}</span>
+          <span>{{ commList[scope.row.type] }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -43,7 +43,7 @@
       </el-table-column>
     </el-table>
     <el-dialog
-      :title="dlgtitle+'新闻'"
+      :title="dlgtitle+'活动'"
       :visible.sync="dlg"
       width="60%"
       @closed="handelDlgClose"
@@ -56,7 +56,7 @@
         <el-form-item label="分类">
           <el-select v-model="form.type" placeholder="请选择">
             <el-option
-              v-for="(item, index) in typeList"
+              v-for="(item, index) in commList"
               :key="index"
               :label="item"
               :value="index"
@@ -94,7 +94,7 @@ export default {
   name: 'News',
   data() {
     return {
-      newsList: [],
+      activList: [],
       dlg: false,
       dlgtitle: '添加',
       form: {
@@ -104,28 +104,33 @@ export default {
         picList: [],
         isAdd: '0'
       },
-      typeList: [],
+      commList: [],
       fileList: []
     }
   },
   mounted() {
     this.$http({
       method: 'post',
-      url: '/news/getAllNewsType',
+      url: '/community/getAllList',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      this.typeList = res.data.object
+      console.log(res)
+      this.commList = res.data.object
     })
-    this.$http({
-      method: 'post',
-      url: '/news/getAllNews',
-      headers: { 'Content-Type': 'application/json' }
-    }).then(res => {
-      this.page = res.data.object
-      this.newsList = res.data.object.list
-    })
+    this.getList()
   },
   methods: {
+    getList() {
+      this.$http({
+        method: 'post',
+        url: '/activity/getAllList',
+        headers: { 'Content-Type': 'application/json' }
+      }).then(res => {
+        console.log(res)
+        this.page = res.data.object
+        this.activList = res.data.object.list
+      })
+    },
     handleDel(id) {
       this.$http({
         method: 'post',
@@ -134,9 +139,9 @@ export default {
         data: { id: id + '', status: '1' }
       }).then(res => {
         if (res.data.success) {
-          this.newsList.forEach((item, index) => {
+          this.activList.forEach((item, index) => {
             if (item.id === id) {
-              this.newsList.splice(index, 1)
+              this.activList.splice(index, 1)
               return
             }
           })
@@ -201,14 +206,14 @@ export default {
         this.dlgtitle = '添加'
         if (res.data.success) {
           if (this.form.isAdd === '0') {
-            this.newsList.splice(0, 0, res.data.object)
+            this.activList.splice(0, 0, res.data.object)
           }
           if (this.form.isAdd === '1') {
-            this.newsList.forEach((item, index) => {
+            this.activList.forEach((item, index) => {
               if (item.id === res.data.object.id) {
                 console.log('item', item)
-                this.newsList.splice(index, 1)
-                this.newsList.splice(0, 0, res.data.object)
+                this.activList.splice(index, 1)
+                this.activList.splice(0, 0, res.data.object)
               }
             })
           }
