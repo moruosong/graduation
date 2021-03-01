@@ -3,10 +3,10 @@
     <div slot="header" class="card-hrader">
       <span>用户管理</span>
       <div style="float: right; width: 280px">
-        <el-input v-model="username" size="small" placeholder="请输入用户名" style="width: 200px" />
-        <el-button type="primary" size="small" style="margin-left: 10px" @click="search(username)">搜索</el-button>
+        <el-input v-model="username" size="mini" placeholder="请输入用户名" style="width: 200px" />
+        <el-button type="primary" size="mini" style="margin-left: 10px" @click="search(username)">搜索</el-button>
       </div>
-      <el-button type="primary" size="small" @click="dlg = true">添加用户</el-button>
+      <el-button type="primary" size="mini" @click="dlg = true">添加用户</el-button>
     </div>
     <el-table :data="userList" style="width: 100%">
       <el-table-column
@@ -31,9 +31,9 @@
       >
         <template scope="scope">
           <div v-if="scope.row.role !== 0">
-            <el-button v-if="scope.row.status === '0'" type="danger" size="small" @click="handleStatusChange(scope.row.username, '1')">禁用</el-button>
-            <el-button v-if="scope.row.status === '1'" type="success" size="small" @click="handleStatusChange(scope.row.username, '0')">启用</el-button>
-            <el-button size="small" type="danger" @click="handleDel(scope.row.username)">删除</el-button>
+            <el-button v-if="scope.row.status === '0'" type="danger" size="mini" @click="handleStatusChange(scope.row.username, '1')">禁用</el-button>
+            <el-button v-if="scope.row.status === '1'" type="success" size="mini" @click="handleStatusChange(scope.row.username, '0')">启用</el-button>
+            <el-button size="mini" type="danger" @click="handleDel(scope.row.username)">删除</el-button>
           </div>
           <div v-else>
             <span>不可修改</span>
@@ -92,7 +92,6 @@ export default {
       url: '/user/pageList',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      console.log(res)
       this.page = res.data.object
       this.userList = res.data.object.list
     })
@@ -105,20 +104,17 @@ export default {
         headers: { 'Content-Type': 'application/json' },
         data: { username: username }
       }).then(res => {
-        console.log(res)
         this.page = res.data.object
         this.userList = res.data.object.list
       })
     },
     handleDel(username) {
-      console.log(username)
       this.$http({
         method: 'post',
         url: '/user/deleteUser',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: { username: username }
       }).then(res => {
-        console.log(res)
         if (res.data.success) {
           let index = 0
           this.userList.forEach((item, i) => {
@@ -163,14 +159,12 @@ export default {
       })
     },
     handleStatusChange(username, status) {
-      console.log(username, status)
       this.$http({
         method: 'post',
         url: '/user/switchStatus',
         data: { username, status },
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       }).then(res => {
-        console.log(res)
         if (res.data.success) {
           this.userList.forEach(item => {
             if (item.username === username) {

@@ -2,7 +2,7 @@
   <el-container class="cont100">
     <el-header>
       <el-image :src="logourl" class="logo" fit="contain" />
-      <!-- <el-button icon="el-icon-user" type="text"/> -->
+      <div style="margin-top: 18px; font-size: 18px">社团管理系统</div>
       <el-dropdown trigger="click" class="myInfo">
         <el-button icon="el-icon-user-solid" class="el-icon--right" circle />
         <el-dropdown-menu slot="dropdown">
@@ -26,12 +26,12 @@
             <span slot="title">用户管理</span>
           </el-menu-item>
           <el-menu-item index="/image">
-            <i class="el-icon-picture" />
-            <span slot="title">轮播图管理</span>
+            <i class="el-icon-s-shop" />
+            <span slot="title">社团管理</span>
           </el-menu-item>
           <el-menu-item index="/news">
             <i class="el-icon-s-order" />
-            <span slot="title">新闻管理</span>
+            <span slot="title">活动管理</span>
           </el-menu-item>
           <el-menu-item index="/notices">
             <i class="el-icon-s-cooperation" />
@@ -90,7 +90,7 @@ export default {
     height: 100%
   }
   .logo {
-    width: 200px;
+    width: 50px;
     height: 100%;
     padding: 0 0 14px 0;
   }

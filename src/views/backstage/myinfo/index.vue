@@ -6,7 +6,7 @@
           <span>基本信息</span>
         </div>
         <div class="avator_box">
-          <img :src="require('@/assets/img/logo2.jpg')">
+          <img :src="require('@/assets/img/newlogo.jpg')">
         </div>
         <div style="padding: 30px">
           <span>用户名：{{ username }}</span><br>
