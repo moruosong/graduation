@@ -43,7 +43,7 @@
           <el-upload
             class="upload-demo"
             :limit="5"
-            action="http://124.71.173.149:8888/api/notice/uploadPic"
+            action="http://82.156.27.63:8888/api/notice/uploadPic"
             :file-list="fileList"
             :before-upload="beforeUpload"
             :on-success="handleSuccess"
