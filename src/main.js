@@ -48,6 +48,8 @@ axios.interceptors.response.use(function(response) {
   return response
 }, function(error) {
   // 对响应错误做点什么
+  // ElementUI.$message.error('登陆超时！请重新登录')
+  router.push('/')
   return Promise.reject(error)
 })
 
