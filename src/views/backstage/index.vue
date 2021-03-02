@@ -14,20 +14,20 @@
     <el-container>
       <el-aside width="200px">
         <el-menu
-          default-active="1"
+          default-active="/image"
           class="el-menu-vertical-demo"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
           :router="true"
         >
-          <el-menu-item v-if="role === '0'" index="/user">
-            <i class="el-icon-user-solid" />
-            <span slot="title">用户管理</span>
-          </el-menu-item>
           <el-menu-item index="/image">
             <i class="el-icon-s-shop" />
             <span slot="title">社团管理</span>
+          </el-menu-item>
+          <el-menu-item v-if="role === '0'" index="/user">
+            <i class="el-icon-user-solid" />
+            <span slot="title">用户管理</span>
           </el-menu-item>
           <el-menu-item index="/news">
             <i class="el-icon-s-order" />

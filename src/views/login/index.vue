@@ -67,7 +67,7 @@ export default {
               window.sessionStorage.setItem('role', res.data.object.role)
               window.sessionStorage.setItem('nickname', res.data.object.nickname)
               window.sessionStorage.setItem('username', res.data.object.username)
-              this.$router.push('/user')
+              this.$router.push('/image')
             } else {
               this.$message({
                 message: res.data.msg,
