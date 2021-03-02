@@ -21,7 +21,7 @@
           active-text-color="#ffd04b"
           :router="true"
         >
-          <el-menu-item index="/user">
+          <el-menu-item v-if="role === '0'" index="/user">
             <i class="el-icon-user-solid" />
             <span slot="title">用户管理</span>
           </el-menu-item>
@@ -37,10 +37,10 @@
             <i class="el-icon-s-cooperation" />
             <span slot="title">公告管理</span>
           </el-menu-item>
-          <el-menu-item index="/recruit">
+          <!-- <el-menu-item index="/recruit">
             <i class="el-icon-s-order" />
             <span slot="title">招聘信息</span>
-          </el-menu-item>
+          </el-menu-item> -->
         </el-menu>
       </el-aside>
       <el-main>
@@ -55,8 +55,12 @@ export default {
   name: 'BackStage',
   data() {
     return {
-      logourl: require('@/assets/img/newlogo.jpg')
+      logourl: require('@/assets/img/newlogo.jpg'),
+      role: 0
     }
+  },
+  mounted() {
+    this.role = window.sessionStorage.getItem('role')
   },
   methods: {
     logout() {

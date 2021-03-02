@@ -25,14 +25,16 @@ axios.defaults.timeout = 5000
 // axios.defaults.headers = { 'Content-type': 'application/x-www-form-urlencoded' }
 axios.interceptors.request.use(function(config) {
   // 在发送请求之前做些什么
+  const token = window.sessionStorage.getItem('token')
+  if (token) {
+    config.headers.token = token
+  }
   if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
     var querystring = require('querystring')
     config.data = querystring.stringify(config.data)
-    return config
   }
   if (!config.data) {
     config.data = {}
-    return config
   }
   // console.log(config)
   return config

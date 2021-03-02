@@ -92,6 +92,7 @@ export default {
       url: '/user/pageList',
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
+      console.log(res)
       this.page = res.data.object
       this.userList = res.data.object.list
     })

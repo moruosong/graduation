@@ -64,6 +64,7 @@ export default {
               })
               console.log(res)
               window.sessionStorage.setItem('token', res.data.object.uuid)
+              window.sessionStorage.setItem('role', res.data.object.role)
               window.sessionStorage.setItem('nickname', res.data.object.nickname)
               window.sessionStorage.setItem('username', res.data.object.username)
               this.$router.push('/user')

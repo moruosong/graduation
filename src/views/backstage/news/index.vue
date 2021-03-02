@@ -13,13 +13,10 @@
       />
       <el-table-column
         :show-overflow-tooltip="true"
-        label="分类"
+        prop="commName"
+        label="社团"
         width="200"
-      >
-        <template scope="scope">
-          <span>{{ commList[scope.row.type] }}</span>
-        </template>
-      </el-table-column>
+      />
       <el-table-column
         :show-overflow-tooltip="true"
         prop="createTime"
@@ -54,13 +51,14 @@
           <el-input v-model="form.title" />
         </el-form-item>
         <el-form-item label="社团">
-          <el-select v-model="form.commId" placeholder="请选择">
-            <el-option
-              v-for="(item, index) in commList"
-              :key="index"
-              :label="item"
-              :value="index"
-            />
+          <el-select v-model="form.commId" placeholder="请选择" style="width: 100%">
+            <div v-for="(item, index) in commList" :key="index">
+              <el-option
+                v-if="item.status === 0"
+                :label="item.commCreator"
+                :value="item.id"
+              />
+            </div>
           </el-select>
         </el-form-item>
         <el-form-item label="内容">
@@ -70,7 +68,7 @@
           <el-upload
             class="upload-demo"
             :limit="5"
-            action="http://124.71.173.149:8888/api/news/uploadPic"
+            action="http://82.156.27.63:8888/api/activity/uploadPic"
             :file-list="fileList"
             :before-upload="beforeUpload"
             :on-success="handleSuccess"
@@ -102,6 +100,7 @@ export default {
         commId: '',
         content: '',
         picList: [],
+        createTime: '',
         isAdd: '0'
       },
       commList: [],
@@ -127,13 +126,13 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       }).then(res => {
         console.log(res)
-        this.activList = res.data.object
+        this.activList = res.data.object.list
       })
     },
     handleDel(id) {
       this.$http({
         method: 'post',
-        url: '/news/deleteNews',
+        url: '/activity/deleteActivity',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: { id: id + '', status: '1' }
       }).then(res => {
@@ -173,7 +172,7 @@ export default {
       this.dlgtitle = '修改'
       this.$http({
         method: 'post',
-        url: '/news/getNewsById',
+        url: '/activity/getActivityById',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         data: { id: id }
       }).then(res => {
@@ -194,6 +193,8 @@ export default {
       })
     },
     handelSubmit() {
+      this.form.createTime = new Date().toLocaleDateString()
+      console.log(this.form)
       this.$http({
         method: 'post',
         url: '/activity/toDoActivity',
