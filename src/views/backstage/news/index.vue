@@ -53,8 +53,8 @@
         <el-form-item label="标题">
           <el-input v-model="form.title" />
         </el-form-item>
-        <el-form-item label="分类">
-          <el-select v-model="form.type" placeholder="请选择">
+        <el-form-item label="社团">
+          <el-select v-model="form.commId" placeholder="请选择">
             <el-option
               v-for="(item, index) in commList"
               :key="index"
@@ -99,7 +99,7 @@ export default {
       dlgtitle: '添加',
       form: {
         title: '',
-        type: '',
+        commId: '',
         content: '',
         picList: [],
         isAdd: '0'
@@ -127,8 +127,7 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       }).then(res => {
         console.log(res)
-        this.page = res.data.object
-        this.activList = res.data.object.list
+        this.activList = res.data.object
       })
     },
     handleDel(id) {
@@ -197,7 +196,7 @@ export default {
     handelSubmit() {
       this.$http({
         method: 'post',
-        url: '/news/toDoNews',
+        url: '/activity/toDoActivity',
         headers: { 'Content-Type': 'application/json' },
         data: this.form
       }).then(res => {
@@ -205,18 +204,7 @@ export default {
         this.dlg = false
         this.dlgtitle = '添加'
         if (res.data.success) {
-          if (this.form.isAdd === '0') {
-            this.activList.splice(0, 0, res.data.object)
-          }
-          if (this.form.isAdd === '1') {
-            this.activList.forEach((item, index) => {
-              if (item.id === res.data.object.id) {
-                console.log('item', item)
-                this.activList.splice(index, 1)
-                this.activList.splice(0, 0, res.data.object)
-              }
-            })
-          }
+          this.getList()
           this.$message({
             message: res.data.msg,
             type: 'success'
