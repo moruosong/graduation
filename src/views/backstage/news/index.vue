@@ -55,7 +55,7 @@
             <div v-for="(item, index) in commList" :key="index">
               <el-option
                 v-if="item.status === 0"
-                :label="item.commCreator"
+                :label="item.commName"
                 :value="item.id"
               />
             </div>
